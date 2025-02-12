@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>Contact - Ronquillo Michael Portfolio</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                <div class="logo-img">
+                    <img src="images/ronquillo_logo_white_ver.png" alt="" class="logo-image">
+                </div>
+                Michael <span>Ronquillo</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="index.html">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="https://about-ronquillo.carrd.co/">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="https://ronquillo-best-artefacts.carrd.co/">Projects</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a href="contact.html">Contact</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown">
+            <div class="links">
+                <a href="#">Home</a>
+                <a href="https://about-ronquillo.carrd.co/">About</a>
+                <a href="https://ronquillo-best-artefacts.carrd.co/">Projects</a>
+                <a href="contact.html">Contact</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+    <section>
+        <div class="contact-container">
+            <h1 data-aos="fade-left" data-aos-duration="1500" data-aos-delay="700">Contact Information</h1>
+            <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">I look forward to work in Twist Resources as an intern. I am excited to learn and grow with the company.</p>
+            <form data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1300" class="contact-form" id="contactForm">
+                <input type="text" placeholder="Full Name" required id="fname">
+                <input type="text" placeholder="Company Name" required id="comp_name">
+                <input type="email" placeholder="Email" required id="email">
+                <textarea placeholder="Message" required id="message"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({offset:0});
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
