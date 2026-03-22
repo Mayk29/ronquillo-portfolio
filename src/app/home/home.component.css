@@ -1,0 +1,328 @@
+/* =============================================
+   FULL-PAGE SLIDER LAYOUT
+   ============================================= */
+
+.slider-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: background-image 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Dark overlay on bg */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.3) 60%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  z-index: 1;
+}
+
+/* =============================================
+   TOP BAR
+   ============================================= */
+.top-bar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-family: "Bebas Neue", serif;
+  font-size: 1.5rem;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.logo img {
+  height: 38px;
+  width: auto;
+}
+
+.logo span {
+  color: #ffbf00;
+  text-shadow: 0 0 8px #ffbf00;
+}
+
+.top-links {
+  display: flex;
+  gap: 28px;
+}
+
+.top-links a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-family: "Bebas Neue", serif;
+  font-size: 1.1rem;
+  letter-spacing: 1.5px;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.top-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ffbf00;
+  transition: width 0.2s;
+}
+
+.top-links a:hover { color: #ffbf00; }
+.top-links a:hover::after { width: 100%; }
+
+/* =============================================
+   HERO CONTENT
+   ============================================= */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 60px;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  color: #ffbf00;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.hero-title {
+  font-family: "Bebas Neue", serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  color: white;
+  line-height: 1.0;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+.hero-desc {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(0.82rem, 1.2vw, 1rem);
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  background-color: #ffbf00;
+  color: #000;
+  border: 2px solid transparent;
+  padding: 11px 26px;
+  font-family: "Bebas Neue", serif;
+  font-size: 1.15rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.2s ease;
+  letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: #ffbf00;
+  border-color: #ffbf00;
+  box-shadow: 0 0 20px rgba(255, 191, 0, 0.4);
+}
+
+.btn-secondary {
+  color: #ffbf00;
+  border: 2px solid #ffbf00;
+  padding: 11px 26px;
+  font-family: "Bebas Neue", serif;
+  font-size: 1.15rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.2s ease;
+  letter-spacing: 1px;
+}
+
+.btn-secondary:hover {
+  background-color: #ffbf00;
+  color: #000;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.social-links a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 2px solid #ffbf00;
+  border-radius: 50%;
+  color: #ffbf00;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: 0.2s linear;
+}
+
+.social-links a:hover {
+  background-color: #ffbf00;
+  color: #000;
+  scale: 1.2;
+  filter: drop-shadow(0 0 8px #ffbf00);
+}
+
+/* =============================================
+   BOTTOM CARD STRIP — the game-feel nav
+   ============================================= */
+.card-strip {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 40px 30px;
+}
+
+.nav-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 14px;
+
+  /* Default (inactive) size */
+  width: 90px;
+  height: 110px;
+  flex-shrink: 0;
+}
+
+/* Active card — much bigger */
+.nav-card.active {
+  width: 200px;
+  height: 150px;
+  border-color: #ffbf00;
+  box-shadow: 0 0 30px rgba(255, 191, 0, 0.5), 0 8px 32px rgba(0,0,0,0.6);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%);
+  transition: background 0.3s;
+}
+
+.nav-card:hover .card-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.05) 60%);
+}
+
+.nav-card.active .card-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.05) 60%);
+}
+
+.card-bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.card-icon {
+  color: #ffbf00;
+  font-size: 1rem;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.nav-card.active .card-icon,
+.nav-card:hover .card-icon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-label {
+  color: white;
+  font-family: "Bebas Neue", serif;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.nav-card.active .card-label {
+  color: #ffbf00;
+  font-size: 1.05rem;
+}
+
+/* =============================================
+   MOBILE
+   ============================================= */
+@media (max-width: 768px) {
+  .top-links { display: none; }
+
+  .hero-content {
+    padding: 0 24px;
+    max-width: 100%;
+  }
+
+  .hero-title { font-size: 2.5rem; }
+
+  .card-strip {
+    padding: 0 16px 20px;
+    gap: 8px;
+    overflow-x: auto;
+  }
+
+  .nav-card { width: 70px; height: 85px; }
+  .nav-card.active { width: 130px; height: 110px; }
+}

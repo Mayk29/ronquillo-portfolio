@@ -1,46 +1,63 @@
-<nav>
-  <div class="nav-container">
-    <a routerLink="/" class="logo" data-aos="zoom-in" data-aos-duration="1500">
-      <div class="logo-img">
-        <img src="ronquillo_logo_white_ver.png" alt="logo" class="logo-image">
-      </div>
-      Michael <span>Ronquillo</span>
-    </a>
-    <div class="links">
-      <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
-      </div>
-      <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
-        <a href="https://about-ronquillo.carrd.co/" target="_blank">About</a>
-      </div>
-      <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
-        <a href="https://ronquillo-best-artefacts.carrd.co/" target="_blank">Projects</a>
-      </div>
-      <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
-        <a href="https://ronquillo-references-testimonial.carrd.co/" target="_blank">References</a>
-      </div>
-      <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
-        <a routerLink="/certificates">Certificates</a>
-      </div>
-      <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
-        <a routerLink="/contact">Contact</a>
-      </div>
-    </div>
-    <button class="hamburg" (click)="toggleDropdown()">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </div>
+<aside class="nav-cards-panel">
 
-  <div class="dropdown" [class.open]="isDropdownOpen">
-    <div class="links">
-      <a routerLink="/" (click)="closeDropdown()">Home</a>
-      <a href="https://about-ronquillo.carrd.co/" target="_blank" (click)="closeDropdown()">About</a>
-      <a href="https://ronquillo-best-artefacts.carrd.co/" target="_blank" (click)="closeDropdown()">Projects</a>
-      <a routerLink="/certificates" (click)="closeDropdown()">Certificates</a>
-      <a routerLink="/contact" (click)="closeDropdown()">Contact</a>
-      <button class="cancel" (click)="closeDropdown()">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
+  <!-- Logo -->
+  <a routerLink="/" class="panel-logo">
+    <img src="ronquillo_logo_white_ver.png" alt="Logo">
+    Michael <span>Ronquillo</span>
+  </a>
+
+  <a routerLink="/" class="nav-card">
+    <div class="nav-card-icon"><i class="fa-solid fa-house"></i></div>
+    <div class="nav-card-text">
+      <span class="nav-card-title">Home</span>
+      <span class="nav-card-subtitle">Back to start</span>
     </div>
-  </div>
-</nav>
+    <i class="fa-solid fa-chevron-right nav-card-arrow"></i>
+  </a>
+
+  <a href="https://about-ronquillo.carrd.co/" target="_blank" class="nav-card">
+    <div class="nav-card-icon"><i class="fa-solid fa-user"></i></div>
+    <div class="nav-card-text">
+      <span class="nav-card-title">About</span>
+      <span class="nav-card-subtitle">Who I am</span>
+    </div>
+    <i class="fa-solid fa-chevron-right nav-card-arrow"></i>
+  </a>
+
+  <a href="https://ronquillo-best-artefacts.carrd.co/" target="_blank" class="nav-card">
+    <div class="nav-card-icon"><i class="fa-solid fa-folder-open"></i></div>
+    <div class="nav-card-text">
+      <span class="nav-card-title">Projects</span>
+      <span class="nav-card-subtitle">My best work</span>
+    </div>
+    <i class="fa-solid fa-chevron-right nav-card-arrow"></i>
+  </a>
+
+  <a href="https://ronquillo-references-testimonial.carrd.co/" target="_blank" class="nav-card">
+    <div class="nav-card-icon"><i class="fa-solid fa-star"></i></div>
+    <div class="nav-card-text">
+      <span class="nav-card-title">References</span>
+      <span class="nav-card-subtitle">Testimonials</span>
+    </div>
+    <i class="fa-solid fa-chevron-right nav-card-arrow"></i>
+  </a>
+
+  <a routerLink="/certificates" routerLinkActive="active-card" class="nav-card">
+    <div class="nav-card-icon"><i class="fa-solid fa-certificate"></i></div>
+    <div class="nav-card-text">
+      <span class="nav-card-title">Certificates</span>
+      <span class="nav-card-subtitle">My credentials</span>
+    </div>
+    <i class="fa-solid fa-chevron-right nav-card-arrow"></i>
+  </a>
+
+  <a routerLink="/contact" routerLinkActive="active-card" class="nav-card">
+    <div class="nav-card-icon"><i class="fa-solid fa-paper-plane"></i></div>
+    <div class="nav-card-text">
+      <span class="nav-card-title">Contact</span>
+      <span class="nav-card-subtitle">Get in touch</span>
+    </div>
+    <i class="fa-solid fa-chevron-right nav-card-arrow"></i>
+  </a>
+
+</aside>

@@ -1,0 +1,161 @@
+.nav-cards-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 290px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 22px;
+  gap: 14px;
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(12px);
+  border-left: 1px solid rgba(255, 191, 0, 0.15);
+  z-index: 200;
+  overflow-y: auto;
+}
+
+.panel-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 1.45rem;
+  text-decoration: none;
+  margin-bottom: 10px;
+  font-family: "Bebas Neue", serif;
+  letter-spacing: 0.5px;
+}
+
+.panel-logo img { height: 40px; width: auto; }
+.panel-logo span { color: #ffbf00; text-shadow: 0 0 8px #ffbf00; }
+
+.nav-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 191, 0, 0.2);
+  text-decoration: none;
+  color: white;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  font-family: "Bebas Neue", serif;
+}
+
+.nav-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 191, 0, 0.12), transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.nav-card:hover::before,
+.nav-card.active-card::before { opacity: 1; }
+
+.nav-card:hover,
+.nav-card.active-card {
+  border-color: #ffbf00;
+  transform: translateX(-5px);
+  box-shadow: 4px 0 20px rgba(255, 191, 0, 0.25);
+}
+
+.nav-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(255, 191, 0, 0.12);
+  border: 1px solid rgba(255, 191, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.15rem;
+  color: #ffbf00;
+  flex-shrink: 0;
+  transition: 0.25s ease;
+}
+
+.nav-card:hover .nav-card-icon,
+.nav-card.active-card .nav-card-icon {
+  background: #ffbf00;
+  color: #000;
+  box-shadow: 0 0 12px #ffbf00;
+}
+
+.nav-card-text { display: flex; flex-direction: column; }
+.nav-card-title { font-size: 1.15rem; letter-spacing: 1px; }
+
+.nav-card-subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 1px;
+}
+
+.nav-card-arrow {
+  margin-left: auto;
+  color: rgba(255, 191, 0, 0.35);
+  font-size: 0.8rem;
+  transition: 0.25s ease;
+}
+
+.nav-card:hover .nav-card-arrow,
+.nav-card.active-card .nav-card-arrow {
+  color: #ffbf00;
+  transform: translateX(3px);
+}
+
+/* Pages with side nav need content offset */
+:host + * section,
+:host + * .contact-container,
+:host + * .cert-sect {
+  margin-right: 290px;
+}
+
+@media (max-width: 820px) {
+  .nav-cards-panel {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px 12px;
+    gap: 10px;
+    border-left: none;
+    border-top: 1px solid rgba(255, 191, 0, 0.15);
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .panel-logo { display: none; }
+
+  .nav-card {
+    flex-direction: column;
+    min-width: 72px;
+    padding: 10px 8px;
+    gap: 6px;
+    border-radius: 10px;
+    transform: none !important;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .nav-card:hover,
+  .nav-card.active-card { transform: translateY(-3px) !important; }
+
+  .nav-card-icon { width: 36px; height: 36px; font-size: 1rem; }
+  .nav-card-subtitle, .nav-card-arrow { display: none; }
+  .nav-card-title { font-size: 0.85rem; }
+}

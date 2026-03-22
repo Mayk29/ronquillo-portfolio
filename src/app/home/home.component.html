@@ -1,47 +1,57 @@
-<section>
-  <div class="main-container">
-    <div class="image" data-aos="zoom-out" data-aos-duration="3000">
-      <img src="Ronquillo_pic.png" alt="Michael Ronquillo">
-    </div>
-    <div class="content">
-      <h1 data-aos="fade-left" data-aos-duration="1500" data-aos-delay="700">
-        Good day, I am <span>Michael Ronquillo</span>
-      </h1>
-      <div class="typewriter" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="900">
-        I am a <span class="typewriter-text">{{ typewriterText }}</span><label>|</label>
-      </div>
-      <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">
-        A web-development fourth year student at Holy Angel University, with proven programming skills,
-        basic knowledge in languages such as Python, HTML, CSS and JavaScript, AngularJS.
-        Seeking for the position of Front-end developer in your company where I can show my
-        different skills in different area in your business industry.
-      </p>
-      <a data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1100"
-         href="Ronquillo_MichaelArnold_Resume.pdf"
-         class="btn--download" download target="_blank">
+<div class="slider-page" [style.backgroundImage]="'url(' + cards[activeIndex].bg + ')'">
+
+  <!-- Dark overlay -->
+  <div class="overlay"></div>
+
+  <!-- Top bar — logo only, cards handle navigation -->
+  <header class="top-bar">
+    <a routerLink="/" class="logo">
+      <img src="ronquillo_logo_white_ver.png" alt="logo">
+      Michael <span>Ronquillo</span>
+    </a>
+  </header>
+
+  <!-- Main content — centered -->
+  <main class="hero-content">
+    <p class="section-label">PORTFOLIO</p>
+    <h1 class="hero-title">{{ cards[activeIndex].title }}</h1>
+    <p class="hero-desc">{{ cards[activeIndex].desc }}</p>
+
+    <div class="hero-actions" *ngIf="activeIndex === 0">
+      <a href="Ronquillo_MichaelArnold_Resume.pdf" class="btn-primary" download target="_blank" (click)="playClickSound()">
         Download Resume <i class="fa-solid fa-download"></i>
       </a>
+      <a href="mailto:ronquillomichaelarnold@gmail.com" class="btn-secondary" (click)="playClickSound()">Hire Me</a>
+    </div>
 
-      <div class="social-links" style="margin-top: 1em;">
-        <a href="https://github.com/Mayk29" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300" target="_blank">
-          <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="mailto:ronquillomichaelarnold@gmail.com" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1500" target="_blank">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
-        <a href="https://www.facebook.com/michael.ronquillo.9279" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1400" target="_blank">
-          <i class="fa-brands fa-facebook"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/michael-ronquillo-3701b92b1/" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1500" target="_blank">
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
-      </div>
+    <div class="social-links" *ngIf="activeIndex === 0">
+      <a href="https://github.com/Mayk29" target="_blank"><i class="fa-brands fa-github"></i></a>
+      <a href="mailto:ronquillomichaelarnold@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://www.facebook.com/michael.ronquillo.9279" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://www.linkedin.com/in/michael-ronquillo-3701b92b1/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
 
-      <div data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1800" style="margin-left: -2em;">
-        <button>
-          <a href="mailto:ronquillomichaelarnold@gmail.com" style="text-decoration: none; color: #000;">Hire me</a>
-        </button>
-      </div>
+    <a *ngIf="activeIndex !== 0 && cards[activeIndex].link" [href]="cards[activeIndex].link"
+       [target]="cards[activeIndex].external ? '_blank' : '_self'"
+       class="btn-primary" style="margin-top: 1.5rem; display: inline-block;" (click)="playClickSound()">
+      Visit Page <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </main>
+
+  <!-- Bottom card nav strip -->
+  <div class="card-strip">
+    <div
+      *ngFor="let card of cards; let i = index"
+      class="nav-card"
+      [class.active]="i === activeIndex"
+      (click)="setActive(i)"
+      (mouseenter)="playHoverSound()"
+      [style.backgroundImage]="'url(' + card.bg + ')'"
+    >
+      <div class="card-overlay"></div>
+      <div class="card-icon"><i [class]="card.icon"></i></div>
+      <span class="card-label">{{ card.label }}</span>
     </div>
   </div>
-</section>
+
+</div>
