@@ -1,0 +1,46 @@
+<nav>
+  <div class="nav-container">
+    <a routerLink="/" class="logo" data-aos="zoom-in" data-aos-duration="1500">
+      <div class="logo-img">
+        <img src="ronquillo_logo_white_ver.png" alt="logo" class="logo-image">
+      </div>
+      Michael <span>Ronquillo</span>
+    </a>
+    <div class="links">
+      <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+      </div>
+      <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+        <a href="https://about-ronquillo.carrd.co/" target="_blank">About</a>
+      </div>
+      <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+        <a href="https://ronquillo-best-artefacts.carrd.co/" target="_blank">Projects</a>
+      </div>
+      <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+        <a href="https://ronquillo-references-testimonial.carrd.co/" target="_blank">References</a>
+      </div>
+      <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
+        <a routerLink="/certificates">Certificates</a>
+      </div>
+      <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+        <a routerLink="/contact">Contact</a>
+      </div>
+    </div>
+    <button class="hamburg" (click)="toggleDropdown()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+  <div class="dropdown" [class.open]="isDropdownOpen">
+    <div class="links">
+      <a routerLink="/" (click)="closeDropdown()">Home</a>
+      <a href="https://about-ronquillo.carrd.co/" target="_blank" (click)="closeDropdown()">About</a>
+      <a href="https://ronquillo-best-artefacts.carrd.co/" target="_blank" (click)="closeDropdown()">Projects</a>
+      <a routerLink="/certificates" (click)="closeDropdown()">Certificates</a>
+      <a routerLink="/contact" (click)="closeDropdown()">Contact</a>
+      <button class="cancel" (click)="closeDropdown()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </div>
+</nav>

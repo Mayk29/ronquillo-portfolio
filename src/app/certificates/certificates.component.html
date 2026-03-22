@@ -1,0 +1,17 @@
+<section class="cert-sect">
+  @for (cert of certificates; track cert.title) {
+    <div class="cert-grid" data-aos="fade-up" data-aos-duration="1000">
+      @if (!cert.imageRight) {
+        <img [src]="cert.image" [alt]="cert.title">
+      }
+      <div class="cert-info">
+        <h2 class="cert-title">{{ cert.title }}</h2>
+        <a [href]="cert.link" target="_blank" class="view-cert">{{ cert.btnLabel }}</a>
+      </div>
+      @if (cert.imageRight) {
+        <img [src]="cert.image" [alt]="cert.title">
+      }
+    </div>
+  }
+  <div style="padding: 2em;"></div>
+</section>
