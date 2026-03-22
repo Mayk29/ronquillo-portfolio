@@ -190,19 +190,14 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 2.6rem;
-  height: 2.6rem;
-  border: 2px solid #ffbf00;
-  border-radius: 50%;
   color: #ffbf00;
-  font-size: 1.2rem;
+  font-size: 2rem;
   text-decoration: none;
   transition: 0.2s linear;
 }
 
 .social-links a:hover {
-  background-color: #ffbf00;
-  color: #000;
+  color: #fff;
   scale: 1.2;
   filter: drop-shadow(0 0 8px #ffbf00);
 }
@@ -307,6 +302,11 @@
 /* =============================================
    MOBILE
    ============================================= */
+/* Carousel controls — mobile only */
+.carousel-dots,
+.carousel-arrows,
+.card-strip-track { display: none; }
+
 @media (max-width: 768px) {
   .top-links { display: none; }
 
@@ -317,12 +317,83 @@
 
   .hero-title { font-size: 2.5rem; }
 
+  /* Carousel strip */
   .card-strip {
-    padding: 0 16px 20px;
-    gap: 8px;
-    overflow-x: auto;
+    padding: 0 0 24px;
+    gap: 0;
+    overflow: visible;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .nav-card { width: 70px; height: 85px; }
-  .nav-card.active { width: 130px; height: 110px; }
+  .card-strip-track {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+
+  .nav-card {
+    width: 70px;
+    height: 85px;
+    flex-shrink: 0;
+  }
+
+  .nav-card.active {
+    width: 130px;
+    height: 110px;
+  }
+
+  /* Carousel dots */
+  .carousel-dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .carousel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+
+  .carousel-dot.active {
+    background: #ffbf00;
+    width: 18px;
+    border-radius: 4px;
+    box-shadow: 0 0 6px #ffbf00;
+  }
+
+  /* Carousel arrow buttons */
+  .carousel-arrows {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .carousel-arrow {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,191,0,0.4);
+    color: #ffbf00;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .carousel-arrow:hover { background: #ffbf00; color: #000; }
 }

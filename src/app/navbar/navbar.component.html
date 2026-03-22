@@ -1,4 +1,12 @@
-<aside class="nav-cards-panel">
+<!-- Hamburger button (mobile only) -->
+<button class="hamburger" (click)="toggleMenu()" aria-label="Open menu">
+  <i class="fa-solid" [class.fa-bars]="!menuOpen" [class.fa-xmark]="menuOpen"></i>
+</button>
+
+<!-- Backdrop (mobile only) -->
+<div class="nav-backdrop" [class.open]="menuOpen" (click)="closeMenu()"></div>
+
+<aside class="nav-cards-panel" [class.mobile-open]="menuOpen">
 
   <!-- Logo -->
   <a routerLink="/" class="panel-logo">
@@ -6,7 +14,7 @@
     Michael <span>Ronquillo</span>
   </a>
 
-  <a routerLink="/" class="nav-card">
+  <a routerLink="/" class="nav-card" (mouseenter)="playHoverSound()" (click)="playClickSound()">
     <div class="nav-card-icon"><i class="fa-solid fa-house"></i></div>
     <div class="nav-card-text">
       <span class="nav-card-title">Home</span>
@@ -15,7 +23,7 @@
     <i class="fa-solid fa-chevron-right nav-card-arrow"></i>
   </a>
 
-  <a href="https://about-ronquillo.carrd.co/" target="_blank" class="nav-card">
+  <a href="https://about-ronquillo.carrd.co/" target="_blank" class="nav-card" (mouseenter)="playHoverSound()" (click)="playClickSound()">
     <div class="nav-card-icon"><i class="fa-solid fa-user"></i></div>
     <div class="nav-card-text">
       <span class="nav-card-title">About</span>
@@ -24,7 +32,7 @@
     <i class="fa-solid fa-chevron-right nav-card-arrow"></i>
   </a>
 
-  <a href="https://ronquillo-best-artefacts.carrd.co/" target="_blank" class="nav-card">
+  <a href="https://ronquillo-best-artefacts.carrd.co/" target="_blank" class="nav-card" (mouseenter)="playHoverSound()" (click)="playClickSound()">
     <div class="nav-card-icon"><i class="fa-solid fa-folder-open"></i></div>
     <div class="nav-card-text">
       <span class="nav-card-title">Projects</span>
@@ -33,8 +41,8 @@
     <i class="fa-solid fa-chevron-right nav-card-arrow"></i>
   </a>
 
-  <a href="https://ronquillo-references-testimonial.carrd.co/" target="_blank" class="nav-card">
-    <div class="nav-card-icon"><i class="fa-solid fa-star"></i></div>
+  <a href="https://ronquillo-references-testimonial.carrd.co/" target="_blank" class="nav-card" (mouseenter)="playHoverSound()" (click)="playClickSound()">
+    <div class="nav-card-icon"><i class="fa-solid fa-users"></i></div>
     <div class="nav-card-text">
       <span class="nav-card-title">References</span>
       <span class="nav-card-subtitle">Testimonials</span>
@@ -42,7 +50,7 @@
     <i class="fa-solid fa-chevron-right nav-card-arrow"></i>
   </a>
 
-  <a routerLink="/certificates" routerLinkActive="active-card" class="nav-card">
+  <a routerLink="/certificates" routerLinkActive="active-card" class="nav-card" (mouseenter)="playHoverSound()" (click)="playClickSound()">
     <div class="nav-card-icon"><i class="fa-solid fa-certificate"></i></div>
     <div class="nav-card-text">
       <span class="nav-card-title">Certificates</span>
@@ -51,8 +59,8 @@
     <i class="fa-solid fa-chevron-right nav-card-arrow"></i>
   </a>
 
-  <a routerLink="/contact" routerLinkActive="active-card" class="nav-card">
-    <div class="nav-card-icon"><i class="fa-solid fa-paper-plane"></i></div>
+  <a routerLink="/contact" routerLinkActive="active-card" class="nav-card" (mouseenter)="playHoverSound()" (click)="playClickSound()">
+    <div class="nav-card-icon"><i class="fa-solid fa-envelope"></i></div>
     <div class="nav-card-text">
       <span class="nav-card-title">Contact</span>
       <span class="nav-card-subtitle">Get in touch</span>
