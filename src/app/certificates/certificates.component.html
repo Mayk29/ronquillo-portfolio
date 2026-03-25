@@ -1,17 +1,63 @@
-<section class="cert-sect">
-  @for (cert of certificates; track cert.title) {
-    <div class="cert-grid" data-aos="fade-up" data-aos-duration="1000">
-      @if (!cert.imageRight) {
-        <img [src]="cert.image" [alt]="cert.title">
-      }
-      <div class="cert-info">
-        <h2 class="cert-title">{{ cert.title }}</h2>
-        <a [href]="cert.link" target="_blank" class="view-cert">{{ cert.btnLabel }}</a>
+<section class="cert-showcase">
+  <div class="cert-hero-wrapper">
+    @for (cert of certificates; track cert.title; let i = $index) {
+      <div
+        class="cert-hero-slide"
+        [class.active]="i === activeIndex"
+        [style.--accent]="cert.accentColor"
+        [style.--accent-light]="cert.accentLight"
+        data-aos="fade"
+        data-aos-duration="600"
+      >
+        <div class="cert-bg-text">{{ cert.bgText }}</div>
+        <div class="cert-content">
+          <div class="cert-image-wrap">
+            <img [src]="cert.image" [alt]="cert.title" class="cert-img" />
+          </div>
+          <div class="cert-meta">
+            <span class="cert-issuer">{{ cert.issuer }}</span>
+            <h2 class="cert-title">{{ cert.title }}</h2>
+            <a [href]="cert.link" target="_blank" class="cert-btn">
+              <span>{{ cert.btnLabel }}</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
-      @if (cert.imageRight) {
-        <img [src]="cert.image" [alt]="cert.title">
+    }
+  </div>
+
+  <!-- Navigation dots -->
+  <div class="cert-nav">
+    <button class="cert-arrow cert-arrow--prev" (click)="prev()" aria-label="Previous">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </button>
+    <div class="cert-dots">
+      @for (cert of certificates; track cert.title; let i = $index) {
+        <button
+          class="cert-dot"
+          [class.active]="i === activeIndex"
+          (click)="goTo(i)"
+          [attr.aria-label]="'Go to ' + cert.title"
+        ></button>
       }
     </div>
-  }
-  <div style="padding: 2em;"></div>
+    <button class="cert-arrow cert-arrow--next" (click)="next()" aria-label="Next">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+    <button class="cert-pause-btn" (click)="togglePlay()" [attr.aria-label]="isPlaying ? 'Pause slideshow' : 'Play slideshow'">
+      @if (isPlaying) {
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      } @else {
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+      }
+    </button>
+  </div>
+
+  <!-- Counter -->
+  <div class="cert-counter">
+    <span class="cert-counter-current">{{ (activeIndex + 1).toString().padStart(2, '0') }}</span>
+    <span class="cert-counter-sep">/</span>
+    <span class="cert-counter-total">{{ certificates.length.toString().padStart(2, '0') }}</span>
+  </div>
 </section>
