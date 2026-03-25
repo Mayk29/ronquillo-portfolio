@@ -15,7 +15,9 @@ body {
 
 /* Pages with side navbar — offset content from the LEFT 290px panel */
 app-navbar ~ app-certificates,
-app-navbar + router-outlet + app-certificates {
+app-navbar ~ app-contact,
+app-navbar + router-outlet + app-certificates,
+app-navbar + router-outlet + app-contact {
   display: block;
   margin-left: 290px;
 }
@@ -34,7 +36,6 @@ app-navbar + router-outlet + app-certificates {
   color: white;
   text-align: center;
   padding: 2rem;
-  margin-left: 290px;
 }
 
 .contact-container h1 {
@@ -72,8 +73,7 @@ app-navbar + router-outlet + app-certificates {
 
 /* CERTIFICATES */
 .cert-sect {
-  width: calc(100% - 290px);
-  margin-left: 290px;
+  width: 100%;
   padding: 60px 40px 40px;
   min-height: 100vh;
   background-image: url('/bg.PNG');
@@ -108,7 +108,7 @@ app-navbar + router-outlet + app-certificates {
 .view-cert:hover { background-color: #000; color: #ffbf00; box-shadow: 0 0 15px #ffbf00; }
 
 @media (max-width: 820px) {
-  .contact-container { margin-left: 0; padding-bottom: 90px; }
-  .cert-sect { width: 100%; margin-left: 0; padding-bottom: 90px; }
+  .contact-container { padding-bottom: 90px; }
+  .cert-sect { padding-bottom: 90px; }
   .cert-grid { grid-template-columns: 1fr; }
 }
