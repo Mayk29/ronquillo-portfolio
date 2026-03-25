@@ -6,6 +6,7 @@ declare const AOS: any;
   selector: 'app-contact',
   standalone: true,
   templateUrl: './contact.component.html',
+  styleUrl: './contact.component.css',
 })
 export class ContactComponent implements OnInit {
   ngOnInit() {

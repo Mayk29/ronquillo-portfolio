@@ -186,10 +186,11 @@
 .cert-nav {
   position: absolute;
   bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1.2rem;
   z-index: 10;
 }
