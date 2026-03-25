@@ -13,7 +13,12 @@ body {
   background-color: #0a0a0a;
 }
 
-
+/* Pages with side navbar — offset content from the LEFT 290px panel */
+app-navbar ~ app-certificates,
+app-navbar + router-outlet + app-certificates {
+  display: block;
+  margin-left: 290px;
+}
 
 /* CONTACT */
 .contact-container {
