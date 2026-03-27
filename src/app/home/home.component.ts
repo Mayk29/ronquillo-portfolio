@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       icon: 'fa-solid fa-certificate',
       bg: 'certs.png',
       title: 'My Certificates',
-      desc: 'Verified credentials and certifications I have earned, including Google Analytics, FreeCodeCamp Responsive Web Design, and JavaScript Algorithms.',
+      desc: 'Verified credentials and certifications I have earned, including CompTia ITF+, Google Analytics, FreeCodeCamp Responsive Web Design, and JavaScript Algorithms.',
       link: '/certificates',
       external: false,
     },
