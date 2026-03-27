@@ -1,0 +1,88 @@
+<section class="ref-showcase">
+  <div class="ref-hero-wrapper">
+    @for (ref of references; track ref.name; let i = $index) {
+      <div
+        class="ref-hero-slide"
+        [class.active]="i === activeIndex"
+        [style.--accent]="ref.accentColor"
+        [style.--accent-light]="ref.accentLight"
+      >
+        <div class="ref-bg-text">{{ ref.bgText }}</div>
+        <div class="ref-content">
+          <div class="ref-image-wrap">
+            <img [src]="ref.image" [alt]="ref.name" class="ref-img" />
+          </div>
+          <div class="ref-meta">
+            <span class="ref-type">{{ ref.type }}</span>
+            <h2 class="ref-name">{{ ref.name }}</h2>
+            <p class="ref-role">{{ ref.role }}</p>
+            <p class="ref-org">{{ ref.organization }}</p>
+
+            @if (ref.testimonial) {
+              <blockquote class="ref-testimonial">
+                <span class="ref-quote-mark">"</span>
+                {{ ref.testimonial }}
+                <span class="ref-quote-mark">"</span>
+              </blockquote>
+            }
+
+            <div class="ref-contact-links">
+              @if (ref.phone) {
+                <a [href]="'tel:' + ref.phone" class="ref-contact-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.77 19.79 19.79 0 013 1.18 2 2 0 015 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  <span>{{ ref.phone }}</span>
+                </a>
+              }
+              @if (ref.email) {
+                <a [href]="'mailto:' + ref.email" class="ref-contact-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <span>{{ ref.email }}</span>
+                </a>
+              }
+              @if (ref.link) {
+                <a [href]="ref.link" target="_blank" class="ref-contact-btn ref-contact-btn--primary">
+                  <span>View Post</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- carousel buttons -->
+  <div class="ref-nav">
+    <button class="ref-arrow ref-arrow--prev" (click)="prev()" aria-label="Previous">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </button>
+    <div class="ref-dots">
+      @for (ref of references; track ref.name; let i = $index) {
+        <button
+          class="ref-dot"
+          [class.active]="i === activeIndex"
+          (click)="goTo(i)"
+          [attr.aria-label]="'Go to ' + ref.name"
+        ></button>
+      }
+    </div>
+    <button class="ref-arrow ref-arrow--next" (click)="next()" aria-label="Next">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+    <button class="ref-pause-btn" (click)="togglePlay()" [attr.aria-label]="isPlaying ? 'Pause slideshow' : 'Play slideshow'">
+      @if (isPlaying) {
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      } @else {
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+      }
+    </button>
+  </div>
+
+  <!-- Counter -->
+  <div class="ref-counter">
+    <span class="ref-counter-current">{{ (activeIndex + 1).toString().padStart(2, '0') }}</span>
+    <span class="ref-counter-sep">/</span>
+    <span class="ref-counter-total">{{ references.length.toString().padStart(2, '0') }}</span>
+  </div>
+</section>

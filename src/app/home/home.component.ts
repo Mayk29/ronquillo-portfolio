@@ -50,8 +50,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       bg: 'references.png',
       title: 'References',
       desc: 'Testimonials and references from professors, mentors, and clients who have worked with me.',
-      link: 'https://ronquillo-references-testimonial.carrd.co/',
-      external: true,
+      link: '/references',
+      external: false,
     },
     {
       label: 'Certificates',

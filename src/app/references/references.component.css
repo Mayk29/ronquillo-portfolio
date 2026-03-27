@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:host {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Showcase wrapper ── */
+.ref-showcase {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+/* ── Hero wrapper ── */
+.ref-hero-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+}
+
+/* ── Individual slide ── */
+.ref-hero-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0s linear 0.6s;
+  overflow: hidden;
+  z-index: 0;
+
+  background-image:
+    radial-gradient(ellipse 70% 60% at 50% 40%, color-mix(in srgb, var(--accent, #b8ff57) 38%, transparent) 0%, transparent 70%),
+    url('../../../public/bg.PNG');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.ref-hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0s linear 0s;
+  z-index: 1;
+}
+
+/* ── Giant bg text watermark ── */
+.ref-bg-text {
+  position: absolute;
+  bottom: -0.1em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(100px, 22vw, 280px);
+  color: rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+  user-select: none;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  pointer-events: none;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* ── Content layout ── */
+.ref-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 6vw, 6rem);
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem clamp(1.5rem, 5vw, 4rem);
+  flex-wrap: wrap;
+}
+
+/* ── Image ── */
+.ref-image-wrap {
+  flex: 0 0 auto;
+  width: clamp(160px, 22vw, 280px);
+  height: clamp(160px, 22vw, 280px);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.45));
+  border: 3px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255,255,255,0.06);
+}
+
+.ref-hero-slide.active .ref-image-wrap {
+  animation: nikeDrop 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes nikeDrop {
+  0%   { transform: translateY(-120px) scale(0.85); opacity: 0; }
+  40%  { opacity: 1; }
+  60%  { transform: translateY(18px) scale(1.04); }
+  75%  { transform: translateY(-10px) scale(0.98); }
+  88%  { transform: translateY(6px) scale(1.01); }
+  100% { transform: translateY(0px) scale(1); opacity: 1; }
+}
+
+.ref-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Meta / text block ── */
+.ref-meta {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ref-type {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent, #b8ff57);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+}
+
+.ref-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  line-height: 1.05;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  margin: 0;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.ref-role {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.ref-org {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+/* ── Testimonial quote ── */
+.ref-testimonial {
+  margin: 0.6rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.75);
+  font-style: italic;
+  max-width: 480px;
+  border-left: 2px solid var(--accent, #b8ff57);
+  padding-left: 1rem;
+}
+
+.ref-quote-mark {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4em;
+  color: var(--accent, #b8ff57);
+  line-height: 0;
+  vertical-align: -0.3em;
+}
+
+/* ── Contact links ── */
+.ref-contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.ref-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.6rem 1.1rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+}
+
+.ref-contact-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+.ref-contact-btn--primary {
+  background: #0a0a0a;
+  color: var(--accent, #b8ff57);
+  border-color: transparent;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.ref-contact-btn--primary:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  gap: 0.8rem;
+}
+
+/* ── Navigation ── */
+.ref-nav {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  z-index: 10;
+}
+
+.ref-arrow {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffffff;
+  transition: background 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(6px);
+}
+
+.ref-arrow:hover {
+  background: rgba(255,255,255,0.28);
+  transform: scale(1.08);
+}
+
+.ref-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ref-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.ref-dot.active {
+  width: 24px;
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+/* ── Counter ── */
+.ref-counter {
+  position: absolute;
+  top: 2rem;
+  right: 2.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  z-index: 10;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.ref-counter-current {
+  font-size: 2.4rem;
+  color: #ffffff;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+.ref-counter-sep {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.45);
+}
+
+.ref-counter-total {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ── Pause / Play button ── */
+.ref-pause-btn {
+  background: rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffffff;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  backdrop-filter: blur(6px);
+  flex-shrink: 0;
+}
+
+.ref-pause-btn:hover {
+  background: rgba(255,255,255,0.28);
+  border-color: rgba(255,255,255,0.5);
+  transform: scale(1.08);
+}
+
+/* ── Responsive ── */
+@media (max-width: 680px) {
+  .ref-content {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 4rem;
+  }
+
+  .ref-image-wrap {
+    width: clamp(120px, 45vw, 200px);
+    height: clamp(120px, 45vw, 200px);
+  }
+
+  .ref-meta {
+    align-items: center;
+    text-align: center;
+  }
+
+  .ref-testimonial {
+    border-left: none;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .ref-contact-links {
+    justify-content: center;
+  }
+}
