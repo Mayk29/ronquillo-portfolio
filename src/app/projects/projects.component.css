@@ -122,6 +122,15 @@
   border: none;
 }
 
+/* ── Image display (no video available) ── */
+.proj-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top;
+}
+
 /* ── Placeholder (no video available) ── */
 .proj-video-placeholder {
   width: 100%;
@@ -207,16 +216,84 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease, gap 0.25s ease;
 }
 
+/* ── Animated running-light border on Live Site button ── */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes borderSpin {
+  to { --border-angle: 360deg; }
+}
+
 .proj-btn--primary {
-  background: #0a0a0a;
   color: var(--accent, #b8ff57);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#0a0a0a, #0a0a0a) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      transparent 0deg,
+      transparent 50deg,
+      var(--accent, #b8ff57) 110deg,
+      var(--accent, #b8ff57) 130deg,
+      transparent 190deg,
+      transparent 360deg
+    ) border-box;
+  animation: borderSpin 2.4s linear infinite;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+/* Glow halo — pushed behind and clipped so it can't bleed inside */
+.proj-btn--primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px; 
+
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 0deg,
+    transparent 50deg,
+    var(--accent, #b8ff57) 110deg,
+    var(--accent, #b8ff57) 130deg,
+    transparent 190deg,
+    transparent 360deg
+  );
+
+  animation: borderSpin 2.4s linear infinite;
+
+  /* THIS is the key fix */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+
+  filter: blur(8px);
+  opacity: 0.6;
+
+  z-index: -1;
 }
 
 .proj-btn--primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   gap: 1rem;
+}
+
+.proj-btn--primary:hover::after {
+  animation-duration: 1.2s;
+  filter: blur(12px);
+  opacity: 0.75;
 }
 
 .proj-btn--ghost {

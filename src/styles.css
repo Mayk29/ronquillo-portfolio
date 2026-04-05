@@ -115,11 +115,13 @@ app-navbar + router-outlet + app-projects {
   .cert-grid { grid-template-columns: 1fr; }
 }
 
-/* REFERENCES & PROJECTS */
+/* REFERENCES, PROJECTS & ABOUT */
 app-navbar ~ app-references,
 app-navbar ~ app-projects,
+app-navbar ~ app-about,
 app-navbar + router-outlet + app-references,
-app-navbar + router-outlet + app-projects {
+app-navbar + router-outlet + app-projects,
+app-navbar + router-outlet + app-about {
   display: block;
   margin-left: 290px;
 }

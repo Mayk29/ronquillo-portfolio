@@ -23,6 +23,12 @@
                 preload="auto"
                 (ended)="onVideoEnded()"
               ></video>
+            } @else if (proj.videoType === 'image') {
+              <img
+                class="proj-image"
+                [src]="proj.imageFile"
+                [alt]="proj.title + ' screenshot'"
+              />
             } @else if (proj.videoType === 'placeholder') {
               <div class="proj-video-placeholder">
                 <div class="placeholder-inner">

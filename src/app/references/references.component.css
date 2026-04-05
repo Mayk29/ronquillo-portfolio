@@ -219,19 +219,79 @@
   transform: translateY(-2px);
 }
 
+/* ── Animated running-light border on primary contact button ── */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes borderSpin {
+  to { --border-angle: 360deg; }
+}
+
 .ref-contact-btn--primary {
-  background: #0a0a0a;
   color: var(--accent, #b8ff57);
-  border-color: transparent;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: 0.8rem;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#0a0a0a, #0a0a0a) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      transparent 0deg,
+      transparent 50deg,
+      var(--accent, #b8ff57) 110deg,
+      var(--accent, #b8ff57) 130deg,
+      transparent 190deg,
+      transparent 360deg
+    ) border-box;
+  animation: borderSpin 2.4s linear infinite;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.ref-contact-btn--primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 0deg,
+    transparent 50deg,
+    var(--accent, #b8ff57) 110deg,
+    var(--accent, #b8ff57) 130deg,
+    transparent 190deg,
+    transparent 360deg
+  );
+  animation: borderSpin 2.4s linear infinite;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  filter: blur(8px);
+  opacity: 0.6;
+  z-index: -1;
 }
 
 .ref-contact-btn--primary:hover {
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
   gap: 0.8rem;
+}
+
+.ref-contact-btn--primary:hover::after {
+  animation-duration: 1.2s;
+  filter: blur(12px);
+  opacity: 0.75;
 }
 
 /* ── Navigation ── */

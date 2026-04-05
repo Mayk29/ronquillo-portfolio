@@ -5,8 +5,9 @@ interface Project {
   title: string;
   category: string;
   description: string;
-  videoType: 'local' | 'placeholder';
+  videoType: 'local' | 'placeholder' | 'image';
   videoFile: string;
+  imageFile?: string;
   websiteUrl?: string;
   githubUrl?: string;
   accentColor: string;
@@ -92,10 +93,9 @@ export class ProjectsComponent implements OnInit, OnDestroy, AfterViewInit {
       category: 'Web & Advertising Publishing',
       description:
         'This project is create for final output in Web and Advertising Publishing Concepts . In this deliverable it was composed of four members per group. I am the project leader and I manage most of the website component in finalization and modification. My main part in this project is product page and is connected to data for product using RESTful API. For the customers list I integrate it using firebase database for it to access the backend of the website.',
-      videoType: 'placeholder',
+      videoType: 'image',
       videoFile: '',
-      websiteUrl: 'https://papajs-samgy.great-site.net/',
-      githubUrl: 'https://github.com/Mayk29/FINALS_WEBPUB_PROJECT',
+      imageFile: 'papaj.PNG',
       accentColor: '#ff3300',
       accentLight: '#ff3103',
       bgText: 'PAPAJ',
@@ -166,7 +166,7 @@ export class ProjectsComponent implements OnInit, OnDestroy, AfterViewInit {
         });
       }
     } else {
-      // Placeholder slide: auto-advance after 6 seconds if playing
+      // Placeholder or image slide: auto-advance after 6 seconds if playing
       if (this.isPlaying) {
         this.placeholderTimer = setTimeout(() => this.next(), 6000);
       }

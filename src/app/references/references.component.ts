@@ -54,7 +54,7 @@ activeIndex = 0;
       bgText: 'REFERENCE',
     },
     {
-      name: 'Gillianne Jorge',
+      name: 'Ms. Gillianne Jorge',
       role: 'Marketing Consultant And Marketing Operations',
       organization: 'Fibercom Telecom Phils. Inc.',
       type: 'Client Testimonial',
