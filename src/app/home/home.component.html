@@ -3,39 +3,56 @@
   <!-- Dark overlay -->
   <div class="overlay"></div>
 
-  <!-- Top bar — logo only, cards handle navigation -->
+  <!-- Top bar — logo left, CTA right -->
   <header class="top-bar">
     <a routerLink="/" class="logo">
       <img src="ronquillo_logo_white_ver.png" alt="logo">
       Michael <span>Ronquillo</span>
     </a>
+    <nav class="top-links">
+      <a routerLink="/contact" (click)="playClickSound()" class="top-cta">
+        <i class="fa-solid fa-envelope"></i> Contact Me
+      </a>
+    </nav>
   </header>
 
-  <!-- Main content — centered -->
-  <main class="hero-content">
-    <p class="section-label">PORTFOLIO</p>
-    <h1 class="hero-title">{{ cards[activeIndex].title }}</h1>
-    <p class="hero-desc">{{ cards[activeIndex].desc }}</p>
+  <!-- Main content -->
+  <main class="hero-content" [class.hero-split]="activeIndex === 0">
 
-    <div class="hero-actions" *ngIf="activeIndex === 0">
-      <a href="Ronquillo_MichaelArnold_Resume.pdf" class="btn-primary" download target="_blank" (click)="playClickSound()">
-        Download Resume <i class="fa-solid fa-download"></i>
+    <!-- Text side -->
+    <div class="hero-text">
+      <p class="section-label">PORTFOLIO</p>
+      <h1 class="hero-title">{{ cards[activeIndex].title }}</h1>
+      <p class="hero-desc">{{ cards[activeIndex].desc }}</p>
+
+      <div class="hero-actions" *ngIf="activeIndex === 0">
+        <a href="Ronquillo_MichaelArnold_Resumelink.pdf" class="btn-primary" download target="_blank" (click)="playClickSound()">
+          Download Resume <i class="fa-solid fa-download"></i>
+        </a>
+        <a href="mailto:ronquillomichaelarnold@gmail.com" class="btn-secondary" (click)="playClickSound()">Hire Me</a>
+      </div>
+
+      <div class="social-links" *ngIf="activeIndex === 0">
+        <a href="https://github.com/Mayk29" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:ronquillomichaelarnold@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://www.facebook.com/michael.ronquillo.9279" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/michael-ronquillo-3701b92b1/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+
+      <a *ngIf="activeIndex !== 0 && cards[activeIndex].link" [href]="cards[activeIndex].link"
+         [target]="cards[activeIndex].external ? '_blank' : '_self'"
+         class="btn-primary" style="margin-top: 1.5rem; display: inline-block;" (click)="playClickSound()">
+        Visit Page <i class="fa-solid fa-arrow-right"></i>
       </a>
-      <a href="mailto:ronquillomichaelarnold@gmail.com" class="btn-secondary" (click)="playClickSound()">Hire Me</a>
     </div>
 
-    <div class="social-links" *ngIf="activeIndex === 0">
-      <a href="https://github.com/Mayk29" target="_blank"><i class="fa-brands fa-github"></i></a>
-      <a href="mailto:ronquillomichaelarnold@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
-      <a href="https://www.facebook.com/michael.ronquillo.9279" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-      <a href="https://www.linkedin.com/in/michael-ronquillo-3701b92b1/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    <!-- Photo — only visible on home slide -->
+    <div class="hero-photo" *ngIf="activeIndex === 0">
+      <div class="hero-photo-ring">
+        <img src="Ronquillo_pic.png" alt="Michael Ronquillo" />
+      </div>
     </div>
 
-    <a *ngIf="activeIndex !== 0 && cards[activeIndex].link" [href]="cards[activeIndex].link"
-       [target]="cards[activeIndex].external ? '_blank' : '_self'"
-       class="btn-primary" style="margin-top: 1.5rem; display: inline-block;" (click)="playClickSound()">
-      Visit Page <i class="fa-solid fa-arrow-right"></i>
-    </a>
   </main>
 
   <!-- Bottom card nav strip -->

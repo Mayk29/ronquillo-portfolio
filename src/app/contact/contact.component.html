@@ -6,7 +6,7 @@
       I am excited to learn and grow with the company.
     </p>
     <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">
-      <a href="mailto:ronquillomichaelarnold@gmail.com">Email: ronquillomichaelarnold&#64;gmail.com</a>
+      <a href="mailto:ronquillomichaelarnold@gmail.com">Email: <span class="email-address">ronquillomichaelarnold&#64;gmail.com</span></a>
     </p>
     <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">
       <span style="color: goldenrod;">Contact Number: +63 997 693 9123</span>
@@ -26,6 +26,100 @@
       <a href="https://www.linkedin.com/in/michael-ronquillo-3701b92b1/" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1500" target="_blank">
         <i class="fa-brands fa-linkedin"></i>
       </a>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="inquiry-form-wrapper" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1200">
+      <h2 class="form-title">Send an Inquiry</h2>
+
+      @if (successMessage) {
+        <div class="form-success">
+          <i class="fa-solid fa-circle-check"></i> {{ successMessage }}
+        </div>
+      }
+
+      @if (errorMessage) {
+        <div class="form-error">
+          <i class="fa-solid fa-circle-exclamation"></i> {{ errorMessage }}
+        </div>
+      }
+
+      <div class="form-group">
+        <label for="senderName">Full Name / Company Name <span class="required">*</span></label>
+        <input
+          id="senderName"
+          type="text"
+          placeholder="e.g. Juan dela Cruz / ABC Corp"
+          [(ngModel)]="form.senderName"
+          [class.input-error]="submitted && !form.senderName"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="senderEmail">Your Email Address <span class="required">*</span></label>
+        <input
+          id="senderEmail"
+          type="email"
+          placeholder="yourname@email.com"
+          [(ngModel)]="form.senderEmail"
+          [class.input-error]="submitted && !form.senderEmail"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="inquiryType">Type of Inquiry <span class="required">*</span></label>
+        <select
+          id="inquiryType"
+          [(ngModel)]="form.inquiryType"
+          [class.input-error]="submitted && !form.inquiryType"
+        >
+          <option value="" disabled selected>Select inquiry type</option>
+          <option value="Internship / Job Offer">Job Offer</option>
+          <option value="Freelance Project">Freelance Project</option>
+          <option value="Frontend Development Service">Frontend Development Service</option>
+          <option value="Collaboration">Collaboration</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="position">Position / Role Offered <span class="form-hint">(if hiring)</span></label>
+        <input
+          id="position"
+          type="text"
+          placeholder="e.g. Full Stack Developer"
+          [(ngModel)]="form.position"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="budget">Budget / Compensation <span class="form-hint">(optional)</span></label>
+        <input
+          id="budget"
+          type="text"
+          placeholder="e.g. ₱15,000/month or Project-based"
+          [(ngModel)]="form.budget"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message / Project Details <span class="required">*</span></label>
+        <textarea
+          id="message"
+          rows="5"
+          placeholder="Describe what you need, project scope, timeline, or any important details..."
+          [(ngModel)]="form.message"
+          [class.input-error]="submitted && !form.message"
+        ></textarea>
+      </div>
+
+      <button class="btn-submit" (click)="sendEmail()" [disabled]="isSending">
+        @if (isSending) {
+          <i class="fa-solid fa-spinner fa-spin"></i> Sending...
+        } @else {
+          <i class="fa-solid fa-paper-plane"></i> Send Inquiry
+        }
+      </button>
     </div>
 
     <p class="quote" data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">

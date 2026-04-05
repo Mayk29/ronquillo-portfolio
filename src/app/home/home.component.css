@@ -87,12 +87,37 @@
   transition: width 0.2s;
 }
 
-.top-links a:hover { color: #ffbf00; }
+.top-links a:hover { color: #000; background-color: #ffbf00; }
 .top-links a:hover::after { width: 100%; }
+
+/* ── Top-bar Contact CTA ── */
+.top-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: 2px solid #ffbf00;
+  color: #ffbf00;
+  font-family: "Bebas Neue", serif;
+  font-size: 1.05rem;
+  letter-spacing: 1.5px;
+  padding: 7px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.top-cta:hover {
+  background: #ffbf00;
+  color: #000;
+  box-shadow: 0 0 16px rgba(255, 191, 0, 0.5);
+}
 
 /* =============================================
    HERO CONTENT
    ============================================= */
+
+/* Takes all remaining vertical space and centers its children */
 .hero-content {
   position: relative;
   z-index: 10;
@@ -103,9 +128,35 @@
   align-items: center;
   text-align: center;
   padding: 0 60px;
-  max-width: 800px;
-  margin: 0 auto;
   width: 100%;
+}
+
+/* Home slide: switch to two-column row */
+.hero-split {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  text-align: left;
+  padding: 0 80px;
+}
+
+/* Text column */
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+/* In split mode, left-align text */
+.hero-split .hero-text {
+  align-items: flex-start;
+  text-align: left;
+  max-width: 560px;
+  flex: 1;
 }
 
 .section-label {
@@ -141,6 +192,10 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 20px;
+}
+
+.hero-split .hero-actions {
+  justify-content: flex-start;
 }
 
 .btn-primary {
@@ -186,6 +241,10 @@
   justify-content: center;
 }
 
+.hero-split .social-links {
+  justify-content: flex-start;
+}
+
 .social-links a {
   display: inline-flex;
   justify-content: center;
@@ -202,8 +261,87 @@
   filter: drop-shadow(0 0 8px #ffbf00);
 }
 
+/* ── Photo ── */
+.hero-photo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Running border on photo ── */
+@property --photo-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes photoSpin {
+  to { --photo-angle: 360deg; }
+}
+
+.hero-photo-ring {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  padding: 4px;
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(#0a0a0a, #0a0a0a) padding-box,
+    conic-gradient(
+      from var(--photo-angle),
+      transparent 0deg,
+      transparent 60deg,
+      #ffbf00 110deg,
+      #fff5c0 130deg,
+      #ffbf00 150deg,
+      transparent 210deg,
+      transparent 360deg
+    ) border-box;
+  border: 4px solid transparent;
+  animation: photoSpin 2.4s linear infinite;
+  box-shadow: 0 0 30px rgba(255, 191, 0, 0.2);
+}
+
+/* Glow halo that follows the light */
+.hero-photo-ring::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  padding: 4px;
+  background: conic-gradient(
+    from var(--photo-angle),
+    transparent 0deg,
+    transparent 60deg,
+    #ffbf00 110deg,
+    #fff5c0 130deg,
+    #ffbf00 150deg,
+    transparent 210deg,
+    transparent 360deg
+  );
+  animation: photoSpin 2.4s linear infinite;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  filter: blur(6px);
+  z-index: -1;
+}
+
+.hero-photo-ring img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
 /* =============================================
-   BOTTOM CARD STRIP — the game-feel nav
+   BOTTOM CARD STRIP
    ============================================= */
 .card-strip {
   position: relative;
@@ -229,14 +367,11 @@
   justify-content: flex-end;
   align-items: center;
   padding: 14px;
-
-  /* Default (inactive) size */
   width: 90px;
   height: 110px;
   flex-shrink: 0;
 }
 
-/* Active card — much bigger */
 .nav-card.active {
   width: 200px;
   height: 150px;
@@ -257,16 +392,6 @@
 
 .nav-card.active .card-overlay {
   background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.05) 60%);
-}
-
-.card-bottom {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
 }
 
 .card-icon {
@@ -302,7 +427,6 @@
 /* =============================================
    MOBILE
    ============================================= */
-/* Carousel controls — mobile only */
 .carousel-dots,
 .carousel-arrows,
 .card-strip-track { display: none; }
@@ -312,12 +436,32 @@
 
   .hero-content {
     padding: 0 24px;
-    max-width: 100%;
+  }
+
+  .hero-split {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+    padding: 0 24px;
+  }
+
+  .hero-split .hero-text {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-split .hero-actions,
+  .hero-split .social-links {
+    justify-content: center;
   }
 
   .hero-title { font-size: 2.5rem; }
 
-  /* Carousel strip */
+  .hero-photo-ring {
+    width: 200px;
+    height: 200px;
+  }
+
   .card-strip {
     padding: 0 0 24px;
     gap: 0;
@@ -348,7 +492,6 @@
     height: 110px;
   }
 
-  /* Carousel dots */
   .carousel-dots {
     display: flex;
     gap: 6px;
@@ -372,7 +515,6 @@
     box-shadow: 0 0 6px #ffbf00;
   }
 
-  /* Carousel arrow buttons */
   .carousel-arrows {
     display: flex;
     gap: 12px;

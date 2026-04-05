@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       icon: 'fa-solid fa-house',
       bg: 'bg.PNG',
       title: 'Michael Ronquillo',
-      desc: 'An Information Technology Web-development student who recently graduated at Holy Angel University in Batch 2025-2026. Proven skills in HTML, CSS, JavaScript, NodeJS, MySQL and AngularJS. Seeking a Full-stack Developer role.',
+      desc: 'An Information Technology Web-development student who recently graduated at Holy Angel University in Batch 2025-2026. Proven skills in HTML, CSS, JavaScript, NodeJS, MySQL and AngularJS. Seeking a Full-Stack Developer role.',
       link: null,
       external: false,
     },
