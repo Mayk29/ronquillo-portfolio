@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:host {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Showcase wrapper ── */
+.proj-showcase {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+/* ── Hero wrapper ── */
+.proj-hero-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+}
+
+/* ── Individual slide ── */
+.proj-hero-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0s linear 0.6s;
+  overflow: hidden;
+  z-index: 0;
+
+  background-image:
+    radial-gradient(ellipse 70% 60% at 50% 40%, color-mix(in srgb, var(--accent, #b8ff57) 35%, transparent) 0%, transparent 70%),
+    url('../../../public/bg.PNG');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.proj-hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0s linear 0s;
+  z-index: 1;
+}
+
+/* ── Giant bg watermark text ── */
+.proj-bg-text {
+  position: absolute;
+  bottom: -0.1em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(80px, 18vw, 240px);
+  color: rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+  user-select: none;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  pointer-events: none;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* ── Content layout ── */
+.proj-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  width: 100%;
+  max-width: 1280px;
+  padding: 2rem clamp(1.5rem, 5vw, 4rem);
+  flex-wrap: wrap;
+}
+
+/* ── Video container ── */
+.proj-video-wrap {
+  flex: 0 0 auto;
+  width: clamp(280px, 45vw, 580px);
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.08),
+    0 30px 80px rgba(0,0,0,0.55),
+    0 0 60px color-mix(in srgb, var(--accent, #b8ff57) 20%, transparent);
+  transform: translateY(0) rotate(-1.5deg);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Drop animation matching certificates nikeDrop */
+.proj-hero-slide.active .proj-video-wrap {
+  animation: projDrop 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes projDrop {
+  0%   { transform: translateY(-120px) rotate(-6deg) scale(0.85); opacity: 0; }
+  40%  { opacity: 1; }
+  60%  { transform: translateY(16px) rotate(-0.5deg) scale(1.03); }
+  75%  { transform: translateY(-8px) rotate(-2deg) scale(0.98); }
+  88%  { transform: translateY(5px) rotate(-1deg) scale(1.01); }
+  100% { transform: translateY(0) rotate(-1.5deg) scale(1); opacity: 1; }
+}
+
+.proj-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+}
+
+/* ── Placeholder (no video available) ── */
+.proj-video-placeholder {
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.placeholder-inner svg {
+  color: var(--accent, #b8ff57);
+  opacity: 0.6;
+}
+
+/* ── Meta / text block ── */
+.proj-meta {
+  flex: 1 1 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 480px;
+}
+
+.proj-category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent, #b8ff57);
+  text-shadow: 0 0 20px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+.proj-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.6rem);
+  line-height: 1.05;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  margin: 0;
+  text-shadow:
+    0 2px 4px rgba(0,0,0,0.5),
+    0 4px 24px rgba(0,0,0,0.35);
+}
+
+.proj-desc {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.72);
+  margin: 0;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+}
+
+/* ── CTA Buttons ── */
+.proj-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.proj-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  font-size: 0.83rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.8rem 1.6rem;
+  border-radius: 100px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, gap 0.25s ease;
+}
+
+.proj-btn--primary {
+  background: #0a0a0a;
+  color: var(--accent, #b8ff57);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.proj-btn--primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  gap: 1rem;
+}
+
+.proj-btn--ghost {
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(6px);
+}
+
+.proj-btn--ghost:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-3px);
+}
+
+.proj-btn svg {
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.proj-btn--primary:hover svg {
+  transform: translateX(3px);
+}
+
+/* ── Navigation ── */
+.proj-nav {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  z-index: 10;
+}
+
+.proj-arrow {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffffff;
+  transition: background 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(6px);
+}
+
+.proj-arrow:hover {
+  background: rgba(255,255,255,0.28);
+  transform: scale(1.08);
+}
+
+.proj-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.proj-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.proj-dot.active {
+  width: 24px;
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+/* ── Counter ── */
+.proj-counter {
+  position: absolute;
+  top: 2rem;
+  right: 2.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  z-index: 10;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.proj-counter-current {
+  font-size: 2.4rem;
+  color: #ffffff;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+.proj-counter-sep {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.45);
+}
+
+.proj-counter-total {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ── Pause / Play button ── */
+.proj-pause-btn {
+  background: rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffffff;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  backdrop-filter: blur(6px);
+  flex-shrink: 0;
+}
+
+.proj-pause-btn:hover {
+  background: rgba(255,255,255,0.28);
+  border-color: rgba(255,255,255,0.5);
+  transform: scale(1.08);
+}
+
+/* ── Responsive ── */
+@media (max-width: 720px) {
+  .proj-content {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 4rem;
+  }
+
+  .proj-video-wrap {
+    width: clamp(240px, 85vw, 420px);
+  }
+
+  .proj-meta {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .proj-links {
+    justify-content: center;
+  }
+
+  .proj-btn {
+    align-self: center;
+  }
+}

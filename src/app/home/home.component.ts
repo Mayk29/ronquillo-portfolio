@@ -31,9 +31,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       icon: 'fa-solid fa-user',
       bg: 'about-card.png',
       title: 'About Me',
-      desc: 'I am a passionate Full-Stack developer who loves building beautiful and functional web experiences. I am always eager to learn new technologies and grow as a developer.',
-      link: 'https://about-ronquillo.carrd.co/',
-      external: true,
+      desc: 'I am a passionate Full-Stack developer who loves building aesthetic and functional web experiences. I am always eager to learn new technologies and grow as a developer.',
+      link: 'about',
+      external: false,
     },
     {
       label: 'Projects',
@@ -41,8 +41,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       bg: 'projects.png',
       title: 'My Projects',
       desc: 'Explore my best works from responsive websites to interactive web apps built through my exoeriences as a student, OJT intern and real-world project with clients.',
-      link: 'https://ronquillo-best-artefacts.carrd.co/',
-      external: true,
+      link: '/projects',
+      external: false,
     },
     {
       label: 'References',

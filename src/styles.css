@@ -16,8 +16,10 @@ body {
 /* Pages with side navbar — offset content from the LEFT 290px panel */
 app-navbar ~ app-certificates,
 app-navbar ~ app-contact,
+app-navbar ~ app-projects,
 app-navbar + router-outlet + app-certificates,
-app-navbar + router-outlet + app-contact {
+app-navbar + router-outlet + app-contact,
+app-navbar + router-outlet + app-projects {
   display: block;
   margin-left: 290px;
 }
@@ -113,9 +115,11 @@ app-navbar + router-outlet + app-contact {
   .cert-grid { grid-template-columns: 1fr; }
 }
 
-/* REFERENCES*/
+/* REFERENCES & PROJECTS */
 app-navbar ~ app-references,
-app-navbar + router-outlet + app-references {
+app-navbar ~ app-projects,
+app-navbar + router-outlet + app-references,
+app-navbar + router-outlet + app-projects {
   display: block;
   margin-left: 290px;
 }

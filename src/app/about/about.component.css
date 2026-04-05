@@ -1,12 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:host {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ---- SHARED: Giant bg watermark text (from references style) ---- */
+.ref-bg-text {
+  position: absolute;
+  bottom: -0.05em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(80px, 18vw, 240px);
+  color: rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+  user-select: none;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---- SHARED: Accent type label (from references .ref-type) ---- */
+.section-type {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffbf00;
+  display: inline-block;
+  margin-bottom: 0.4rem;
+}
+
 /* ---- HERO ---- */
 .about-hero {
   position: relative;
   min-height: 100vh;
   display: flex;
+  justify-content: center; 
   align-items: center;
   padding: 6rem 8% 4rem;
   overflow: hidden;
   border-bottom: 1px solid rgba(255,191,0,0.2);
+  background-image:
+    radial-gradient(ellipse 70% 60% at 30% 50%, rgba(184,255,87,0.04) 0%, transparent 70%),
+    url('../../../public/bg.PNG');
+  background-size: cover;
+  background-position: center;
 }
 
 .hero-code-bg {
@@ -31,24 +72,28 @@
 .code-lines.small { font-size: 0.7rem; }
 
 .hero-content {
-  flex: 1;
-  z-index: 2;
-  max-width: 55%;
+  flex: none;           
+  max-width: 700px;       
+  text-align: center;       
+  margin: 0 auto;          
 }
 
 .hero-label {
-  font-size: 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
   letter-spacing: 0.3em;
   color: rgba(255,255,255,0.7);
   margin-bottom: 0.5rem;
 }
 
 .hero-name {
-  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
   color: #ffbf00;
-  text-shadow: 0 0 12px #ffbf0088;
+  text-shadow: 0 0 12px rgba(255,191,0,0.5), 0 2px 4px rgba(0,0,0,0.5);
   margin-bottom: 1rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
+  line-height: 1.05;
 }
 
 .hero-divider {
@@ -59,17 +104,18 @@
 }
 
 .bio-heading {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
   letter-spacing: 0.2em;
   color: rgba(255,255,255,0.5);
   margin-bottom: 0.8rem;
 }
 
 .bio-text {
-  font-size: 0.85rem;
-  line-height: 1.7;
+  font-size: 0.88rem;
+  line-height: 1.75;
   color: rgba(255,255,255,0.8);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 300;
   max-width: 520px;
 }
@@ -78,7 +124,8 @@
   z-index: 2;
   width: 280px;
   flex-shrink: 0;
-  margin-left: 2rem;
+  margin: 2rem auto 0;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5));
 }
 
 .hero-photo img {
@@ -93,17 +140,21 @@
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  border: 2px solid #ffbf00;
+  border: 1.5px solid rgba(255,191,0,0.6);
   border-radius: 50%;
   color: #ffbf00;
   margin-top: 2rem;
   text-decoration: none;
-  transition: 0.2s;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+  background: rgba(255,191,0,0.05);
 }
 
 .scroll-btn:hover {
   background: #ffbf00;
   color: #000;
+  transform: translateY(2px);
+  box-shadow: 0 8px 24px rgba(255,191,0,0.3);
 }
 
 /* ---- COMMON SECTION ---- */
@@ -112,12 +163,21 @@
   padding: 5rem 8%;
   border-bottom: 1px solid rgba(255,191,0,0.15);
   overflow: hidden;
+  background-image: url('../../../public/bg.PNG');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .section-split {
+  position: relative;
+  z-index: 2;
   display: flex;
   gap: 4rem;
   align-items: flex-start;
+  align-items: center;    
+  justify-content: center;
+  text-align: center;      
 }
 
 .section-split.reverse {
@@ -127,30 +187,35 @@
 .section-content {
   flex: 1;
   color: white;
+  text-align: center;
 }
 
 .section-content p {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   line-height: 1.8;
   color: rgba(255,255,255,0.8);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 300;
   margin-bottom: 0.5rem;
 }
 
 .section-heading {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
+  font-weight: 600;
   letter-spacing: 0.2em;
   color: rgba(255,255,255,0.5);
   margin-bottom: 1rem;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
 }
 
 .section-heading-yellow {
-  font-size: 0.85rem;
-  letter-spacing: 0.2em;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
   color: #ffbf00;
   margin-bottom: 1.2rem;
+  margin-top: 0.3rem;
+  text-shadow: 0 0 10px rgba(255,191,0,0.4);
 }
 
 /* ---- HOBBIES / LOGO BLOCK ---- */
@@ -164,14 +229,22 @@
 }
 
 .mr-logo {
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 5rem;
-  font-weight: 900;
   color: white;
   border: 3px solid white;
   padding: 1rem 1.5rem;
   letter-spacing: -0.05em;
   line-height: 1;
   text-align: center;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+}
+
+.mr-logo:hover {
+  border-color: #ffbf00;
+  color: #ffbf00;
+  text-shadow: 0 0 20px rgba(255,191,0,0.6);
 }
 
 .logo-quote {
@@ -181,7 +254,8 @@
   margin-top: 1rem;
   text-align: center;
   font-style: italic;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
 }
 
 /* ---- SKILLS CHART ---- */
@@ -190,22 +264,25 @@
 }
 
 .skills-chart-card {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.65);
   border: 1px solid rgba(255,191,0,0.3);
   border-radius: 8px;
   padding: 1.5rem;
   text-align: center;
+  backdrop-filter: blur(8px);
 }
 
 .chart-title {
   color: white;
   font-size: 1.1rem;
   margin-bottom: 0.2rem;
+  font-family: 'DM Sans', sans-serif;
 }
 
 .chart-subtitle {
   font-size: 0.7rem;
-  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+  color: rgb(255, 255, 255);
   letter-spacing: 0.2em;
   margin-bottom: 1.5rem;
 }
@@ -233,11 +310,17 @@
   border-radius: 3px 3px 0 0;
   transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1);
   min-height: 4px;
+  height: 0%;
+}
+
+.bar.animated {
+  /* heights set inline via JS */
 }
 
 .bar-label {
-  font-size: 0.5rem;
-  color: rgba(255,255,255,0.6);
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
   margin-top: 0.4rem;
   text-align: center;
   white-space: nowrap;
@@ -249,18 +332,20 @@
 
 .chart-footer {
   font-size: 0.65rem;
-  color: rgba(255,255,255,0.4);
+  font-weight: 600;
+  color: #ffbf00;
   letter-spacing: 0.2em;
   margin-top: 1rem;
 }
 
 /* ---- EDUCATION ---- */
 .edu-section {
-  background: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.3);
 }
 
 .edu-inner {
   position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 3rem;
@@ -272,6 +357,7 @@
   opacity: 0.1;
   pointer-events: none;
   overflow: hidden;
+  z-index: 0;
 }
 
 .edu-content {
@@ -281,17 +367,20 @@
 
 .edu-label {
   font-size: 0.75rem;
+  font-weight: 600;
   letter-spacing: 0.25em;
   color: rgba(255,255,255,0.4);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
 }
 
 .edu-title {
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
   color: #ffbf00;
-  text-shadow: 0 0 10px #ffbf0055;
+  text-shadow: 0 0 10px rgba(255,191,0,0.4);
   margin-bottom: 1rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
 }
 
 .edu-details {
@@ -299,14 +388,16 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.4rem;
 }
 
 .edu-details li {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: rgba(255,255,255,0.8);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 300;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(255,191,0,0.4);
 }
 
 .edu-logo-block {
@@ -321,6 +412,12 @@
   width: 140px;
   opacity: 0.85;
   filter: drop-shadow(0 0 10px rgba(255,191,0,0.3));
+  transition: opacity 0.3s ease;
+}
+
+.school-logo:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 20px rgba(255,191,0,0.5));
 }
 
 /* ---- CERTIFICATES ---- */
@@ -329,15 +426,18 @@
 }
 
 .certs-inner {
+  position: relative;
+  z-index: 2;
   max-width: 600px;
   margin: 0 auto;
 }
 
 .cert-intro {
   color: rgba(255,255,255,0.6);
-  font-size: 0.85rem;
-  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  font-family: 'DM Sans', sans-serif;
   margin-bottom: 1.5rem;
+  font-style: italic;
 }
 
 .cert-list {
@@ -353,31 +453,40 @@
 .cert-list li {
   color: rgba(255,255,255,0.85);
   font-size: 0.9rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 300;
-  padding-left: 1rem;
+  padding: 0.5rem 1rem;
   border-left: 2px solid #ffbf00;
+  background: rgba(255,191,0,0.04);
+  transition: background 0.2s ease;
+}
+
+.cert-list li:hover {
+  background: rgba(255,191,0,0.1);
 }
 
 .view-certs-btn {
-  display: inline-block;
-  background: #ffbf00;
-  color: #000;
-  font-size: 0.9rem;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #0a0a0a;
+  color: #ffbf00;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
   padding: 0.8rem 2rem;
   text-decoration: none;
   border-radius: 4px;
-  letter-spacing: 0.1em;
-  transition: 0.2s;
+  border: 1px solid rgba(255,191,0,0.3);
+  transition: all 0.25s ease;
   margin-bottom: 2rem;
+  backdrop-filter: blur(6px);
 }
 
 .view-certs-btn:hover {
-  background: transparent;
-  color: #ffbf00;
-  border: 2px solid #ffbf00;
-  box-shadow: 0 0 20px #ffbf00;
+  box-shadow: 0 8px 24px rgba(255,191,0,0.25);
+  border-color: #ffbf00;
+  background: rgba(255,191,0,0.05);
 }
 
 .social-footer {
@@ -393,17 +502,21 @@
   justify-content: center;
   width: 3rem;
   height: 3rem;
-  border: 2px solid #ffbf00;
+  border: 1.5px solid rgba(255,191,0,0.5);
   border-radius: 50%;
   color: #ffbf00;
   font-size: 1.4rem;
   text-decoration: none;
-  transition: 0.2s;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+  background: rgba(255,191,0,0.05);
 }
 
 .social-icon-footer:hover {
   background: #ffbf00;
   color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255,191,0,0.3);
 }
 
 .social-icon-footer.credly {
@@ -426,11 +539,29 @@
     margin: 2rem auto 0;
   }
 
-  .section-split, .section-split.reverse, .edu-inner {
+  .section-split,
+  .section-split.reverse,
+  .edu-inner {
     flex-direction: column;
   }
 
   .logo-block { min-width: unset; }
   .skills-chart-wrapper { min-width: unset; width: 100%; }
   .edu-logo-block { display: none; }
+
+  .ref-bg-text {
+    font-size: clamp(60px, 25vw, 120px);
+  }
+}
+
+#hobbies,
+#skills,
+#education,
+#secondary,
+#certs {
+  scroll-margin-top: 80px; 
+}
+
+html {
+  scroll-behavior: smooth;
 }
