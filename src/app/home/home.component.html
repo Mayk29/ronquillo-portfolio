@@ -26,10 +26,10 @@
       <p class="hero-desc">{{ cards[activeIndex].desc }}</p>
 
       <div class="hero-actions" *ngIf="activeIndex === 0">
-        <a href="Ronquillo_MichaelArnold_Resumelink.pdf" class="btn-primary" download target="_blank" (click)="playClickSound()">
+        <a href="Ronquillo_MichaelArnold_Resume.pdf" class="btn-primary" download target="_blank" (click)="playClickSound()">
           Download Resume <i class="fa-solid fa-download"></i>
         </a>
-        <a href="mailto:ronquillomichaelarnold@gmail.com" class="btn-secondary" (click)="playClickSound()">Hire Me</a>
+        <a routerLink="/contact" class="btn-secondary" (click)="playClickSound()">Hire Me</a>
       </div>
 
       <div class="social-links" *ngIf="activeIndex === 0">
