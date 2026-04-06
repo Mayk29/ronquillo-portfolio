@@ -53,7 +53,7 @@ export class ProjectsComponent implements OnInit, OnDestroy, AfterViewInit {
       bgText: 'WSEA',
     },
     {
-      title: 'Mother & Child',
+      title: 'Mother & Child Pharmacy',
       category: 'Web Development Capstone 1 & 2',
       description:
         'A web-based medicine finder and pharmacy management system developed for Mother and Child Pharmacy in Porac, Pampanga. This capstone project was created to address the lack of accessible, real-time medicine information and the inefficiencies of manual inventory systems in small community pharmacies, which often result in unnecessary pharmacy visits and delays in accessing essential medicines. As project lead, we built features including real-time medicine search, inventory management, pre-order processing, POS transactions, demand forecasting, offline sync via IndexedDB, and report generation—helping local residents efficiently locate available medicines while enabling the pharmacy to streamline operations and improve inventory accuracy. Built with Angular 18, Node.js, Express.js, MySQL, Socket.IO, Chart.js, jsPDF, and XLSX. Deployed on Vercel and Railway.',
