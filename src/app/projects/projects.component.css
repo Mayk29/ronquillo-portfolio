@@ -427,10 +427,40 @@
 
 /* ── Responsive ── */
 @media (max-width: 720px) {
+  .proj-showcase {
+    overflow-y: auto;
+    min-height: 100vh;
+    height: auto;
+  }
+
+  .proj-hero-wrapper {
+    height: auto;
+    min-height: unset;
+  }
+
+  .proj-hero-slide {
+    position: relative;
+    inset: unset;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transition: none;
+    padding-bottom: 8rem; /* room for nav bar */
+  }
+
+  .proj-hero-slide.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+  }
+
   .proj-content {
     flex-direction: column;
     gap: 1.5rem;
     padding-top: 4rem;
+    padding-bottom: 1rem;
   }
 
   .proj-video-wrap {
@@ -449,5 +479,18 @@
 
   .proj-btn {
     align-self: center;
+  }
+
+  .proj-nav {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+  }
+
+  .proj-counter {
+    position: fixed;
+    top: 1rem;
+    right: 1.2rem;
   }
 }
