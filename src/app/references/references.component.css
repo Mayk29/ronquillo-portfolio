@@ -404,20 +404,43 @@
 
 /* ── Responsive ── */
 @media (max-width: 680px) {
+  .ref-hero-wrapper {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .ref-hero-slide {
+    position: relative;
+    inset: unset;
+    display: none;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .ref-hero-slide.active {
+    display: flex;
+  }
+
   .ref-content {
     flex-direction: column;
-    gap: 1.5rem;
-    padding-top: 4rem;
+    gap: 1.2rem;
+    padding-top: 5rem;
+    padding-bottom: 7rem;
+    align-items: center;
   }
 
   .ref-image-wrap {
-    width: clamp(120px, 45vw, 200px);
-    height: clamp(120px, 45vw, 200px);
+    width: clamp(120px, 45vw, 180px);
+    height: clamp(120px, 45vw, 180px);
   }
 
   .ref-meta {
     align-items: center;
     text-align: center;
+  }
+
+  .ref-name {
+    font-size: clamp(1.6rem, 6vw, 2.4rem);
   }
 
   .ref-testimonial {
@@ -428,6 +451,19 @@
 
   .ref-contact-links {
     justify-content: center;
+  }
+
+  .ref-counter {
+    top: 1.2rem;
+    right: 1.2rem;
+  }
+
+  .ref-counter-current {
+    font-size: 1.8rem;
+  }
+
+  .ref-nav {
+    bottom: 1.5rem;
   }
 }
 

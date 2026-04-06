@@ -17,6 +17,8 @@
     height: auto;
     min-height: 100vh;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -423,7 +425,9 @@
 
   .hero-content {
     padding: 0 24px;
-    flex: none;
+    flex: 1;
+    justify-content: flex-start;
+    padding-top: 16px;
   }
 
   .hero-split {
@@ -431,6 +435,7 @@
     text-align: center;
     gap: 16px;
     padding: 16px 24px 20px;
+    justify-content: flex-start;
   }
 
   .hero-photo { order: -1; }
@@ -459,12 +464,13 @@
   .social-links a { font-size: 1.6rem; }
 
   .card-strip {
-    padding: 16px 0 24px;
+    padding: 12px 0 20px;
     gap: 0;
     overflow: visible;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    margin-top: auto;
   }
 
   .card-strip-track {
