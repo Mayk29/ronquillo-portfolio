@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isMobile = false;
   visibleCards: any[] = [];
 
-  // ── Loading screen ──────────────────────────────────────────
+  // Loading screen 
   isLoading = !sessionStorage.getItem('portfolioBootPlayed');
 
   loadingProgress = 0;
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     { pct: 100, text: 'LAUNCH READY',                   line: '[ OK ] Welcome, Operator.' },
   ];
 
-  // ── Audio ────────────────────────────────────────────────────
+  //  Audio
   private audioContext: AudioContext | null = null;
   private bgmBuffer: AudioBuffer | null = null;
   private bgmSource: AudioBufferSourceNode | null = null;
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private userHasInteracted = false;
   private unlockHandler!: () => void;
 
-  // ── Cards ────────────────────────────────────────────────────
+  // Cards 
   private readonly VISIBLE = 3;
 
   cards = [
@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       icon: 'fa-solid fa-house',
       bg: 'bg.PNG',
       title: 'Michael Ronquillo',
-      desc: 'An Information Technology Web-development student who recently graduated at Holy Angel University in Batch 2025-2026. Proven skills in HTML, CSS, JavaScript, NodeJS, MySQL and AngularJS. Seeking a Full-stack Developer role.',
+      desc: 'An Information Technology Web-development student who recently graduated at Holy Angel University in Batch 2025-2026. Proven skills in HTML, CSS, JavaScript, NodeJS, MySQL and AngularJS. Seeking a Full-Stack Developer role.',
       link: null,
       external: false,
     },
@@ -138,7 +138,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  // ── Audio init ───────────────────────────────────────────────
+  // Audio init 
   private initAudio() {
     // Hover pool
     for (let i = 0; i < this.HOVER_POOL_SIZE; i++) {
@@ -149,10 +149,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.clickSound.volume = 0.5;
     this.bgmFallback.loop = true;
     this.bgmFallback.volume = 0.2;
-
-    // ── KEY FIX: Pre-fetch and decode the buffer RIGHT NOW (no gesture needed
-    //   for network requests). By the time the user clicks anything, the buffer
-    //   is already decoded and startBgmBuffer() fires with zero extra delay.
     this.preloadBgmBuffer();
 
     // Unlock handler — fires on the very first user gesture
@@ -188,11 +184,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     document.addEventListener('touchstart', this.unlockHandler);
   }
 
-  // Pre-fetch + decode audio BEFORE any gesture (network calls are always allowed)
+  // Pre-fetch + decode audio BEFORE any gesture 
   private async preloadBgmBuffer() {
     try {
-      // Create AudioContext eagerly — it will be 'suspended' in most browsers
-      // but that's fine; we only need it to decode the buffer now.
+      // Create AudioContext 
       if (!this.audioContext) {
         this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
       }
@@ -201,8 +196,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       const arrayBuf = await res.arrayBuffer();
       this.bgmBuffer = await this.audioContext.decodeAudioData(arrayBuf);
 
-      // If the context happened to start in 'running' state (some browsers /
-      // localhost) and BGM is already pending, play immediately.
+      // If the context happened to start in 'running' state (some browsers / localhost) and BGM is already pending, play immediately.
       if (this.pendingBgmPlay && !this.bgmIsPlaying && this.audioContext.state === 'running') {
         this.startBgmBuffer();
       }
@@ -211,7 +205,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  // ── BGM playback ─────────────────────────────────────────────
+  // BGM playback 
   private startBgmBuffer() {
     if (!this.audioContext || !this.bgmBuffer) return;
 
@@ -246,7 +240,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  // ── Loading sequence ─────────────────────────────────────────
+  // Loading sequence 
   private startLoadingSequence() {
     // Signal that BGM should start on first interaction
     this.pendingBgmPlay = true;
@@ -276,7 +270,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }, delay);
   }
 
-  // ── BGM mute toggle ──────────────────────────────────────────
+  //  BGM mute toggle
   isMuted = false;
 
   toggleMute() {
@@ -288,7 +282,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  // ── Card nav ─────────────────────────────────────────────────
+  // Card nav 
   private updateVisibleCards() {
     const total = this.cards.length;
     const half = Math.floor(this.VISIBLE / 2);
