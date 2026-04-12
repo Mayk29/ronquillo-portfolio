@@ -65,6 +65,18 @@ export class ProjectsComponent implements OnInit, OnDestroy, AfterViewInit {
       bgText: 'MOTHERCHILD',
     },
     {
+      title: 'IT Squarehub — Certificate Generator System',
+      category: 'Full Stack Development Internship',
+      description:
+        'A full-stack certificate generator system built during my internship at IT Squarehub Global Services Corporation in Clark, Pampanga. As team lead of 4 interns, I designed and delivered the project on time, earning the Innovative Project Excellence Award. The system handles certificate generation, preview, and data management to streamline internal document processing. Built with Angular 18, Node.js, and MySQL, with Cloudinary integrated for image storage and optimized asset delivery. Deployed on Vercel and Render for a stable production environment. I also received the Leadership and Outstanding Intern Awards for delivering a complete, production-ready end-to-end solution.',
+      videoType: 'image',
+      videoFile: '',
+      imageFile: 'cert-gen.PNG',
+      accentColor: '#036afa',
+      accentLight: '#0112ff',
+      bgText: 'ITSQUAREHUB',
+    },
+    {
       title: 'Mind Matters',
       category: 'Web & Dynamic Web Applications',
       description:
