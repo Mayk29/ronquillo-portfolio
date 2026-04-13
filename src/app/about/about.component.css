@@ -714,3 +714,74 @@ html {
   animation: slidingGlow 2.5s linear infinite;
   filter: blur(1px);
 }
+/* ============================================================
+   SCROLL-REVEAL ANIMATIONS
+   Elements with [data-reveal] start hidden and animate in
+   once they enter the viewport (class .is-visible is added by JS).
+   data-reveal-delay="N" sets a delay in milliseconds.
+   ============================================================ */
+
+/* --- Base hidden state --- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Watermark bg text: fade-in only (no vertical shift looks better) */
+.ref-bg-text[data-reveal] {
+  transform: translateX(-50%) scale(0.97);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Photos / logo blocks: slight upward drift + fade */
+.hero-photo[data-reveal],
+.logo-block[data-reveal],
+.edu-logo-block[data-reveal] {
+  transform: translateY(40px);
+}
+
+/* Hero content: slide in from the left */
+.hero-content[data-reveal] {
+  transform: translateX(-24px);
+}
+
+/* --- Visible state --- */
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+.ref-bg-text[data-reveal].is-visible {
+  transform: translateX(-50%) scale(1);
+}
+
+/* Dynamic delay support via data attribute */
+[data-reveal-delay="100"]  { transition-delay: 0.10s; }
+[data-reveal-delay="200"]  { transition-delay: 0.20s; }
+[data-reveal-delay="250"]  { transition-delay: 0.25s; }
+[data-reveal-delay="300"]  { transition-delay: 0.30s; }
+[data-reveal-delay="340"]  { transition-delay: 0.34s; }
+[data-reveal-delay="350"]  { transition-delay: 0.35s; }
+[data-reveal-delay="380"]  { transition-delay: 0.38s; }
+[data-reveal-delay="400"]  { transition-delay: 0.40s; }
+[data-reveal-delay="420"]  { transition-delay: 0.42s; }
+[data-reveal-delay="450"]  { transition-delay: 0.45s; }
+[data-reveal-delay="460"]  { transition-delay: 0.46s; }
+[data-reveal-delay="500"]  { transition-delay: 0.50s; }
+[data-reveal-delay="540"]  { transition-delay: 0.54s; }
+[data-reveal-delay="550"]  { transition-delay: 0.55s; }
+
+/* Reduced motion: */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
