@@ -33,12 +33,26 @@ export class ProjectsComponent implements OnInit, OnDestroy, AfterViewInit {
       category: 'Enterprise Retail Management Portal',
       description:
         "Velo by Velox is a multi-branch retail management portal I currently build as a Junior Frontend Developer at Cellwego PH. I develop responsive, mobile-first layouts and interactive UI patterns across the Purchase, Sales, Inventory, and Repair modules, and I designed and implemented the platform's dark mode color system for a consistent, accessible theme across every module. Built with React, TypeScript, and Vite.",
-      videoType: 'placeholder',
+      videoType: 'image',
       videoFile: '',
+      imageFile: 'velo-showcase.png',
       websiteUrl: 'https://velo.velox.ph/',
       accentColor: '#01ffe1',
       accentLight: '#72ffef',
       bgText: 'VELOXVELO',
+    },
+    {
+      title: 'Velox',
+      category: 'Company Website',
+      description:
+        "Velox is the independent technology company behind Velo, and I contribute to its company website as a Junior Frontend Developer. I build responsive, mobile-first layouts and interactive UI patterns for the marketing site, working on consistent visual theming to keep the site polished and on-brand. Built with React, TypeScript, and Vite.",
+      videoType: 'image',
+      videoFile: '',
+      imageFile: 'velox-showcase.png',
+      websiteUrl: 'https://velox.ph/',
+      accentColor: '#4d6bff',
+      accentLight: '#8fa2ff',
+      bgText: 'VELOX',
     },
     {
       title: 'Valiant E-Sports Page',

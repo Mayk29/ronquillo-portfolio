@@ -361,14 +361,6 @@
   background-color: rgba(0,0,0,0.3);
 }
 
-.exp-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: center;
-}
-
 .exp-list {
   list-style: none;
   padding: 0;
