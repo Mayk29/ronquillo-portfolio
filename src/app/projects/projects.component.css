@@ -101,9 +101,19 @@
   transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* Static screenshots stay unrotated — a tilted transform forces the
+   browser to resample the image, blurring text-heavy previews. */
+.proj-video-wrap:has(.proj-image) {
+  transform: translateY(0) rotate(0deg);
+}
+
 /* Drop animation matching certificates nikeDrop */
 .proj-hero-slide.active .proj-video-wrap {
   animation: projDrop 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.proj-hero-slide.active .proj-video-wrap:has(.proj-image) {
+  animation: projDropFlat 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes projDrop {
@@ -113,6 +123,15 @@
   75%  { transform: translateY(-8px) rotate(-2deg) scale(0.98); }
   88%  { transform: translateY(5px) rotate(-1deg) scale(1.01); }
   100% { transform: translateY(0) rotate(-1.5deg) scale(1); opacity: 1; }
+}
+
+@keyframes projDropFlat {
+  0%   { transform: translateY(-120px) scale(0.85); opacity: 0; }
+  40%  { opacity: 1; }
+  60%  { transform: translateY(16px) scale(1.03); }
+  75%  { transform: translateY(-8px) scale(0.98); }
+  88%  { transform: translateY(5px) scale(1.01); }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
 .proj-video {
