@@ -32,7 +32,7 @@ export class ProjectsComponent implements OnInit, OnDestroy, AfterViewInit {
       title: 'Valiant E-Sports Page',
       category: 'Web & Dynamic Web Applications',
       description:
-        "This project is create for final output in Basic Programming in Web and Dynamic Web Applications and Development Tools. In basic programming I used html, css. JavaScript for my final output. Valiant Esports is an ogranization in Holy Angel University and I ask for their permission to create website for them. For Dynamic Web Applications, it was a group setup and I experienced using php and mySQL for database. I am the project leader and my best experience in this project is creating the cart and login page to work properly with backend.",
+        "This project is create for final output in Basic Programming in Web and Dynamic Web Applications and Development Tools. In basic programming I used html, css. JavaScript for my final output. Valiant Esports is an organization in Holy Angel University and I ask for their permission to create website for them. For Dynamic Web Applications, it was a group setup and I experienced using php and mySQL for database. I am the project leader and my best experience in this project is creating the cart and login page to work properly with backend.",
       videoType: 'local',
       videoFile: 'valiant-showcase.mp4',
       websiteUrl: 'http://valiant-esports.atwebpages.com/login_form.php',

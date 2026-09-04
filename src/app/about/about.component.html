@@ -2,24 +2,80 @@
 <section class="about-hero" data-reveal>
   
   <div class="hero-content" data-reveal>
-    <p class="hero-label" data-reveal>WEB DEVELOPER</p>
+    <p class="hero-label" data-reveal>FRONTEND DEVELOPER</p>
     <h1 class="hero-name" data-reveal>MICHAEL ARNOLD RONQUILLO</h1>
     <div class="hero-divider" data-reveal></div>
     <div class="hero-bio-section" data-reveal>
       <h3 class="bio-heading">PERSONAL BIOGRAPHY (BACKGROUND &amp; SKILLS)</h3>
       <p class="bio-text">
-        A web-development fourth year student at Holy Angel University with proven programming skills,
-        basic knowledge in languages such as Python, HTML, CSS, JavaScript, AngularJS, TailwindCSS,
-        Bootstrap, and SEO Management. Seeking for the position of Front-end developer in your well
-        respected company where I can show my different skills in different area in your business industry.
+        Frontend Developer building responsive, accessible interfaces with React, TypeScript, and Angular.
+        Currently a Junior Frontend Developer at Cellwego PH, working on Velo by Velox — a multi-branch retail
+        management portal — while also delivering freelance web projects for direct clients. Track record includes
+        a perfect 100/100 SEO score and 94/100 Performance on Google PageSpeed Insights. Skilled at translating
+        Figma designs into production-ready code with consistent design systems and dark mode theming.
       </p>
-      <a class="scroll-btn" (click)="scrollTo('hobbies')">
+      <a class="scroll-btn" (click)="scrollTo('experience')">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
       </a>
     </div>
   </div>
   <div class="hero-photo" data-reveal data-reveal-delay="200">
     <img src="Ronquillo_pic.png" alt="Michael Ronquillo">
+  </div>
+</section>
+
+<!-- EXPERIENCE SECTION -->
+<section class="about-section experience-section" id="experience">
+  <div class="ref-bg-text" data-reveal>EXPERIENCE</div>
+  <div class="exp-inner" data-reveal data-reveal-delay="100">
+    <span class="section-type">CAREER</span>
+    <h3 class="section-heading-yellow">WORK EXPERIENCE</h3>
+    <ul class="exp-list">
+      <li class="exp-item" data-reveal data-reveal-delay="150">
+        <div class="exp-header">
+          <h4 class="exp-role">Junior Frontend Developer <span class="exp-company">— Cellwego PH</span></h4>
+          <span class="exp-dates">Jun 2026 – Present · Remote</span>
+        </div>
+        <ul class="edu-details">
+          <li>Build responsive, mobile-first layouts and interactive UI patterns for Velo by Velox, a multi-branch retail management portal (React, TypeScript, Vite), across Purchase, Sales, Inventory, and Repair modules.</li>
+          <li>Design and implement consistent visual theming, including a dark mode color system, for readable, accessible UI across all modules.</li>
+        </ul>
+      </li>
+      <li class="exp-item" data-reveal data-reveal-delay="200">
+        <div class="exp-header">
+          <h4 class="exp-role">Freelance Web Developer <span class="exp-company">— Self-Employed / Direct Clients</span></h4>
+          <span class="exp-dates">2024 – Present · Remote</span>
+        </div>
+        <ul class="edu-details">
+          <li>Deliver websites for business clients end-to-end — UI implementation, page-builder customization (WordPress/Elementor), responsive QA, and post-launch support.</li>
+          <li>Currently building a custom dark-mode theming engine for a cybersecurity-consulting client's website (Maroev Cyber Systems).</li>
+          <li>Scoped and quoted projects independently, including rate cards and client proposals with coded look-and-feel mockups.</li>
+        </ul>
+      </li>
+      <li class="exp-item" data-reveal data-reveal-delay="250">
+        <div class="exp-header">
+          <h4 class="exp-role">Full Stack Developer Intern <span class="exp-company">— IT Squarehub Global Services Corporation</span></h4>
+          <span class="exp-dates">Jul – Oct 2025 · Clark, Pampanga</span>
+        </div>
+        <ul class="edu-details">
+          <li>Led a team of 4 interns to deliver a full-stack certificate generator system on time, earning the Innovative Project Excellence Award among all intern cohorts.</li>
+          <li>Built an end-to-end Angular 18 + Node.js + MySQL app, deployed on Vercel/Render with Cloudinary image storage.</li>
+        </ul>
+      </li>
+      <li class="exp-item" data-reveal data-reveal-delay="300">
+        <div class="exp-header">
+          <h4 class="exp-role">SEO Developer (Project-Based) <span class="exp-company">— Bamacom Inc.</span></h4>
+          <span class="exp-dates">Dec 2024 – Mar 2025 · Pasig City</span>
+        </div>
+        <ul class="edu-details">
+          <li>Led a full WordPress/Elementor website redesign and on-page SEO overhaul using Yoast, achieving a perfect 100/100 SEO score on Google PageSpeed Insights.</li>
+          <li>Reached 100/100 Accessibility and Best Practices, and 94/100 Performance on desktop audit.</li>
+        </ul>
+      </li>
+    </ul>
+    <a class="scroll-btn" (click)="scrollTo('hobbies')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
   </div>
 </section>
 
@@ -67,6 +123,18 @@
         <div class="skills-chart" id="skillsChart">
           <div class="bar-wrap">
             <div class="bar" data-level="85"></div>
+            <span class="bar-label">React</span>
+          </div>
+          <div class="bar-wrap">
+            <div class="bar" data-level="80"></div>
+            <span class="bar-label">TypeScript</span>
+          </div>
+          <div class="bar-wrap">
+            <div class="bar" data-level="85"></div>
+            <span class="bar-label">Angular</span>
+          </div>
+          <div class="bar-wrap">
+            <div class="bar" data-level="85"></div>
             <span class="bar-label">HTML</span>
           </div>
           <div class="bar-wrap">
@@ -74,7 +142,7 @@
             <span class="bar-label">CSS</span>
           </div>
           <div class="bar-wrap">
-            <div class="bar" data-level="70"></div>
+            <div class="bar" data-level="75"></div>
             <span class="bar-label">JS</span>
           </div>
           <div class="bar-wrap">
@@ -82,20 +150,20 @@
             <span class="bar-label">Tailwind</span>
           </div>
           <div class="bar-wrap">
-            <div class="bar" data-level="60"></div>
-            <span class="bar-label">Bootstrap</span>
+            <div class="bar" data-level="70"></div>
+            <span class="bar-label">Node.js</span>
           </div>
           <div class="bar-wrap">
             <div class="bar" data-level="65"></div>
             <span class="bar-label">WordPress</span>
           </div>
           <div class="bar-wrap">
-            <div class="bar" data-level="85"></div>
-            <span class="bar-label">Angular</span>
-          </div>
-          <div class="bar-wrap">
             <div class="bar" data-level="80"></div>
             <span class="bar-label">MySQL</span>
+          </div>
+          <div class="bar-wrap">
+            <div class="bar" data-level="70"></div>
+            <span class="bar-label">Figma</span>
           </div>
           <div class="bar-wrap">
             <div class="bar" data-level="65"></div>
@@ -109,12 +177,11 @@
       <span class="section-type">TECH STACK</span>
       <h3 class="section-heading-yellow">SKILLS SECTION : TECH STACK</h3>
       <p>
-        Currently I am improving my programming skills by what I learn through my college degree, OJT Internship and
-        self-learning through online resources. The languages that I am confident using are Angular, MySQL, HTML,
-        CSS, TailwindCSS, and Bootstrap. I have a background also in WordPress development and
-        SEO management. I am working out to gain more knowledge using other languages that are
-        useful in the IT industry. The framework that I have a background in and continue studying is
-        AngularJS and MySQL.
+        I build production interfaces daily with React, TypeScript, and Angular, backed by hands-on experience
+        with Node.js, Express.js, and MySQL for full-stack features. I'm confident translating Figma designs into
+        consistent, accessible design systems — including custom dark mode theming engines — and I have a strong
+        background in WordPress development and on-page SEO, having driven a client site to a perfect 100/100
+        SEO score on Google PageSpeed Insights.
       </p>
       <a class="scroll-btn" (click)="scrollTo('education')">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
