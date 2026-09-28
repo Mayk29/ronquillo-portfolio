@@ -41,7 +41,8 @@
      [style.backgroundImage]="activeIndex === 0 ? 'none' : 'url(' + cards[activeIndex].bg + ')'">
 
   <video #homeVideo class="home-video" [class.is-hidden]="activeIndex !== 0"
-         src="media/home-story.mp4" poster="media/home-story-poster.jpg"
+         [src]="isMobile ? 'media/home-story-mobile.mp4' : 'media/home-story.mp4'"
+         [poster]="isMobile ? 'media/home-story-mobile-poster.jpg' : 'media/home-story-poster.jpg'"
          autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
 
   <div class="overlay"></div>
@@ -67,20 +68,20 @@
   <main class="hero-content" [class.hero-home]="activeIndex === 0">
 
     <!-- Home slide: fixed overlay on top of the story video -->
-    <div class="home-overlay" *ngIf="activeIndex === 0" [class.is-in]="!isLoading">
+    <div class="home-overlay" #homeOverlay *ngIf="activeIndex === 0" [class.is-in]="!isLoading">
       <h1 class="sr-only">Michael Arnold Ronquillo — Frontend, Full Stack, Web &amp; SEO Developer</h1>
-      <p class="home-subtitle">Building fast, accessible web apps — from pixel-perfect UI to the APIs behind it.</p>
+      <p class="home-subtitle">{{ cards[0].desc }}</p>
       <div class="home-actions">
         <a href="Michael-Ronquillo-Resume.pdf" class="home-btn home-btn--primary" download target="_blank" (click)="playClickSound()">
           <i class="fa-solid fa-download"></i> Download Resume
         </a>
         <a routerLink="/contact" class="home-btn home-btn--ghost" (click)="playClickSound()">Hire Me</a>
-        <div class="home-socials">
-          <a href="https://github.com/Mayk29" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="mailto:ronquillomichaelarnold@gmail.com" target="_blank" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-          <a href="https://www.facebook.com/michael.ronquillo.9279" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-          <a href="https://www.linkedin.com/in/michael-ronquillo-3701b92b1/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        </div>
+      </div>
+      <div class="home-socials">
+        <a href="https://github.com/Mayk29" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:ronquillomichaelarnold@gmail.com" target="_blank" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://www.facebook.com/michael.ronquillo.9279" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/michael-ronquillo-3701b92b1/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
       </div>
     </div>
 

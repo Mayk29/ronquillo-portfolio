@@ -11,6 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('homeVideo') homeVideo?: ElementRef<HTMLVideoElement>;
+  @ViewChild('homeOverlay') homeOverlay?: ElementRef<HTMLElement>;
   private readonly reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   activeIndex = 0;
@@ -124,7 +125,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:resize')
   onResize() {
+    const wasMobile = this.isMobile;
     this.isMobile = window.innerWidth <= 768;
+    // Crossing the breakpoint swaps the video source, which reloads it
+    if (wasMobile !== this.isMobile) setTimeout(() => this.syncHomeVideo());
+    this.scheduleFit();
   }
 
   ngOnInit() {
@@ -291,6 +296,38 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     // Angular doesn't reflect the static `muted` attribute to the property, which autoplay requires
     video.muted = true;
     this.syncHomeVideo();
+    this.scheduleFit();
+    // The overlay's height depends on web fonts, so refit once they've loaded
+    document.fonts?.ready.then(() => this.scheduleFit());
+  }
+
+  private fitFrame = 0;
+  private scheduleFit() {
+    cancelAnimationFrame(this.fitFrame);
+    this.fitFrame = requestAnimationFrame(() => this.fitHomeVideo());
+  }
+
+  // Desktop: scale the 1920×1080 video so its content area (x 300–1620, y 110–720) fits between
+  // the top of the page and the overlay text — as large as possible without cropping or overlap.
+  // Mobile uses the square video and plain CSS instead.
+  private fitHomeVideo() {
+    const video = this.homeVideo?.nativeElement;
+    if (!video) return;
+    const props = ['width', 'height', 'left', 'top'];
+    const overlay = this.homeOverlay?.nativeElement;
+    if (this.isMobile || !overlay) {
+      props.forEach(p => video.style.removeProperty(p));
+      return;
+    }
+    const page = video.parentElement!.getBoundingClientRect();
+    const areaTop = 12;
+    const areaBottom = overlay.getBoundingClientRect().top - page.top - 24;
+    const scale = Math.min((areaBottom - areaTop) / (720 - 110), page.width / (1620 - 300 + 80));
+    const width = 1920 * scale;
+    video.style.width = `${width}px`;
+    video.style.height = `${1080 * scale}px`;
+    video.style.left = `${(page.width - width) / 2}px`;
+    video.style.top = `${areaTop + (areaBottom - areaTop - 610 * scale) / 2 - 110 * scale}px`;
   }
 
   // Play the story video only while the Home slide is showing
@@ -315,6 +352,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this.visibleCards = result;
     this.syncHomeVideo();
+    // The overlay is re-created when returning to the Home slide
+    if (this.activeIndex === 0) setTimeout(() => this.scheduleFit());
   }
 
   carouselNext() {
@@ -348,6 +387,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    cancelAnimationFrame(this.fitFrame);
     clearTimeout(this.loadingTimer);
     this.stopBgm();
     this.audioContext?.close();
