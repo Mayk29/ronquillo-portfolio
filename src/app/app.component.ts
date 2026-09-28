@@ -21,8 +21,8 @@ export class AppComponent implements OnInit {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
-        // Show navbar on all pages EXCEPT the home page
-        this.showNavbar = event.urlAfterRedirects !== '/';
+        // Show navbar on all pages EXCEPT the home page (ignore ?query and #hash, e.g. ?fbclid=)
+        this.showNavbar = event.urlAfterRedirects.split(/[?#]/)[0] !== '/';
       });
   }
 }
