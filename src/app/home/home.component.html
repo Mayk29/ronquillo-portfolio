@@ -37,7 +37,12 @@
 <!-- MAIN HOME PAGE -->
 <div class="slider-page"
      [class.page-visible]="!isLoading"
-     [style.backgroundImage]="'url(' + cards[activeIndex].bg + ')'">
+     [class.home-slide]="activeIndex === 0"
+     [style.backgroundImage]="activeIndex === 0 ? 'none' : 'url(' + cards[activeIndex].bg + ')'">
+
+  <video #homeVideo class="home-video" [class.is-hidden]="activeIndex !== 0"
+         src="media/home-story.mp4" poster="media/home-story-poster.jpg"
+         autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
 
   <div class="overlay"></div>
 
@@ -59,38 +64,37 @@
   </header>
 
   <!-- Main content -->
-  <main class="hero-content" [class.hero-split]="activeIndex === 0">
+  <main class="hero-content" [class.hero-home]="activeIndex === 0">
 
-    <div class="hero-text">
+    <!-- Home slide: fixed overlay on top of the story video -->
+    <div class="home-overlay" *ngIf="activeIndex === 0" [class.is-in]="!isLoading">
+      <h1 class="sr-only">Michael Arnold Ronquillo — Frontend, Full Stack, Web &amp; SEO Developer</h1>
+      <p class="home-subtitle">Building fast, accessible web apps — from pixel-perfect UI to the APIs behind it.</p>
+      <div class="home-actions">
+        <a href="Michael-Ronquillo-Resume.pdf" class="home-btn home-btn--primary" download target="_blank" (click)="playClickSound()">
+          <i class="fa-solid fa-download"></i> Download Resume
+        </a>
+        <a routerLink="/contact" class="home-btn home-btn--ghost" (click)="playClickSound()">Hire Me</a>
+        <div class="home-socials">
+          <a href="https://github.com/Mayk29" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="mailto:ronquillomichaelarnold@gmail.com" target="_blank" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://www.facebook.com/michael.ronquillo.9279" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.linkedin.com/in/michael-ronquillo-3701b92b1/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other slides: unchanged -->
+    <div class="hero-text" *ngIf="activeIndex !== 0">
       <p class="section-label">PORTFOLIO</p>
       <h1 class="hero-title">{{ cards[activeIndex].title }}</h1>
       <p class="hero-desc">{{ cards[activeIndex].desc }}</p>
 
-      <div class="hero-actions" *ngIf="activeIndex === 0">
-        <a href="Michael-Ronquillo-Resume.pdf" class="btn-primary" download target="_blank" (click)="playClickSound()">
-          Download Resume <i class="fa-solid fa-download"></i>
-        </a>
-        <a routerLink="/contact" class="btn-secondary" (click)="playClickSound()">Hire Me</a>
-      </div>
-
-      <div class="social-links" *ngIf="activeIndex === 0">
-        <a href="https://github.com/Mayk29" target="_blank"><i class="fa-brands fa-github"></i></a>
-        <a href="mailto:ronquillomichaelarnold@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
-        <a href="https://www.facebook.com/michael.ronquillo.9279" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://www.linkedin.com/in/michael-ronquillo-3701b92b1/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-      </div>
-
-      <a *ngIf="activeIndex !== 0 && cards[activeIndex].link" [href]="cards[activeIndex].link"
+      <a *ngIf="cards[activeIndex].link" [href]="cards[activeIndex].link"
          [target]="cards[activeIndex].external ? '_blank' : '_self'"
          class="btn-primary" style="margin-top: 1.5rem; display: inline-block;" (click)="playClickSound()">
         Visit Page <i class="fa-solid fa-arrow-right"></i>
       </a>
-    </div>
-
-    <div class="hero-photo" *ngIf="activeIndex === 0">
-      <div class="hero-photo-ring">
-        <img src="Ronquillo_pic.png" alt="Michael Ronquillo" />
-      </div>
     </div>
 
   </main>

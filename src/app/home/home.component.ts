@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -9,7 +9,10 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('homeVideo') homeVideo?: ElementRef<HTMLVideoElement>;
+  private readonly reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   activeIndex = 0;
   isMobile = false;
   visibleCards: any[] = [];
@@ -282,7 +285,26 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Card nav 
+  ngAfterViewInit() {
+    const video = this.homeVideo?.nativeElement;
+    if (!video) return;
+    // Angular doesn't reflect the static `muted` attribute to the property, which autoplay requires
+    video.muted = true;
+    this.syncHomeVideo();
+  }
+
+  // Play the story video only while the Home slide is showing
+  private syncHomeVideo() {
+    const video = this.homeVideo?.nativeElement;
+    if (!video) return;
+    if (this.activeIndex === 0 && !this.reducedMotion) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }
+
+  // Card nav
   private updateVisibleCards() {
     const total = this.cards.length;
     const half = Math.floor(this.VISIBLE / 2);
@@ -292,6 +314,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       result.push({ ...this.cards[idx], originalIndex: idx });
     }
     this.visibleCards = result;
+    this.syncHomeVideo();
   }
 
   carouselNext() {
