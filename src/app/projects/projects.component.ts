@@ -32,7 +32,7 @@ export class ProjectsComponent implements OnInit, OnDestroy, AfterViewInit {
       title: 'Velo by Velox',
       category: 'Mobile Retail & Repair Management App',
       description:
-        "Velo by Velox is a mobile device retail and repair management app I currently work on as a Junior Frontend Developer at Cellwego PH, covering Purchase, Sales, Inventory, and Repair tracking across multiple branches. I build responsive, mobile-first layouts and interactive UI patterns, and I also work on and fix backend API endpoints supporting the platform as needed. Built with React, TypeScript, and Vite.",
+        "Velo by Velox is a mobile device retail and repair management app I currently work on as a Junior Frontend Developer at Cellwego PH, covering Purchase, Sales, Inventory, and Repair tracking across multiple branches. I build responsive, mobile-first layouts and interactive UI patterns, including offline-first sync support as an installable PWA, and I also work on and fix its backend API endpoints as needed. Built with React, TypeScript, and Vite on the frontend, and Node.js, Express, and MySQL on the backend.",
       videoType: 'image',
       videoFile: '',
       imageFile: 'velo-showcase.png',
