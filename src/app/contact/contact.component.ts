@@ -29,7 +29,7 @@ export class ContactComponent implements OnInit {
 
   // EmailJS credentials 
   private SERVICE_ID  = 'service_sntvp0o';
-  private TEMPLATE_ID = 'template_19njit9';
+  private TEMPLATE_ID = 'template_bfzjfja';
   private PUBLIC_KEY  = 'kXie1IhljJA_ep7_z';
   
 
