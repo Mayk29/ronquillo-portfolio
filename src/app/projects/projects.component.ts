@@ -30,9 +30,9 @@ export class ProjectsComponent implements OnInit, OnDestroy, AfterViewInit {
   projects: Project[] = [
     {
       title: 'Velo by Velox',
-      category: 'Enterprise Retail Management Portal',
+      category: 'Mobile Retail & Repair Management App',
       description:
-        "Velo by Velox is a multi-branch retail management portal I currently build as a Junior Frontend Developer at Cellwego PH. I develop responsive, mobile-first layouts and interactive UI patterns across the Purchase, Sales, Inventory, and Repair modules, and I designed and implemented the platform's dark mode color system for a consistent, accessible theme across every module. Built with React, TypeScript, and Vite.",
+        "Velo by Velox is a mobile device retail and repair management app I currently work on as a Junior Frontend Developer at Cellwego PH, covering Purchase, Sales, Inventory, and Repair tracking across multiple branches. I build responsive, mobile-first layouts and interactive UI patterns, and I also work on and fix backend API endpoints supporting the platform as needed. Built with React, TypeScript, and Vite.",
       videoType: 'image',
       videoFile: '',
       imageFile: 'velo-showcase.png',
