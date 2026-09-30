@@ -1,15 +1,18 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, HostListener, ViewChild, ElementRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { SwipeDirective } from '../shared/swipe.directive';
+import { SoundService } from '../shared/sound.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, SwipeDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+  private sound = inject(SoundService);
   @ViewChild('homeVideo') homeVideo?: ElementRef<HTMLVideoElement>;
   @ViewChild('homeOverlay') homeOverlay?: ElementRef<HTMLElement>;
   private readonly reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -49,12 +52,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private bgmIsPlaying = false;
   private bgmFallback = new Audio('game-loading.mp3');
   private usingFallback = false;
-
-  // SFX — pool hover sounds to prevent rapid-fire audio choke
-  private clickSound = new Audio('click.mp3');
-  private hoverPool: HTMLAudioElement[] = [];
-  private hoverPoolIndex = 0;
-  private readonly HOVER_POOL_SIZE = 4;
 
   private loadingTimer: any;
   private stepIndex = 0;
@@ -148,13 +145,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Audio init 
   private initAudio() {
-    // Hover pool
-    for (let i = 0; i < this.HOVER_POOL_SIZE; i++) {
-      const a = new Audio('hover.mp3');
-      a.volume = 0.4;
-      this.hoverPool.push(a);
-    }
-    this.clickSound.volume = 0.5;
     this.bgmFallback.loop = true;
     this.bgmFallback.volume = 0.2;
     this.preloadBgmBuffer();
@@ -356,34 +346,47 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.activeIndex === 0) setTimeout(() => this.scheduleFit());
   }
 
+  // Alternating suffix restarts the CSS slide-in animation on every change
+  slideKey = '';
+  private slideFlip = false;
+  private markSlide(dir: 'next' | 'prev') {
+    this.slideFlip = !this.slideFlip;
+    this.slideKey = dir + (this.slideFlip ? '-a' : '-b');
+  }
+
+  // Touch swipe: left = next card, right = previous card
+  swipeCard(step: 1 | -1) {
+    if (this.isLoading) return;
+    step === 1 ? this.carouselNext() : this.carouselPrev();
+  }
+
   carouselNext() {
+    this.markSlide('next');
     this.activeIndex = (this.activeIndex + 1) % this.cards.length;
     this.updateVisibleCards();
     this.playClickSound();
   }
 
   carouselPrev() {
+    this.markSlide('prev');
     this.activeIndex = (this.activeIndex - 1 + this.cards.length) % this.cards.length;
     this.updateVisibleCards();
     this.playClickSound();
   }
 
   setActive(index: number) {
+    if (index !== this.activeIndex) this.markSlide(index > this.activeIndex ? 'next' : 'prev');
     this.activeIndex = index;
     this.updateVisibleCards();
     this.playClickSound();
   }
 
   playHoverSound() {
-    const audio = this.hoverPool[this.hoverPoolIndex];
-    this.hoverPoolIndex = (this.hoverPoolIndex + 1) % this.HOVER_POOL_SIZE;
-    audio.currentTime = 0;
-    audio.play().catch(() => {});
+    this.sound.playHover();
   }
 
   playClickSound() {
-    this.clickSound.currentTime = 0;
-    this.clickSound.play().catch(() => {});
+    this.sound.playClick();
   }
 
   ngOnDestroy() {

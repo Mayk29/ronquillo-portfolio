@@ -45,6 +45,7 @@
 .about-hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center; 
   align-items: center;
@@ -871,4 +872,9 @@ html {
     transform: none !important;
     transition: none !important;
   }
+}
+
+/* ── Bottom clearance for phone/tablet browser bars ── */
+@media (max-width: 1024px) {
+  #secondary { padding-bottom: calc(3.5rem + var(--bottom-clear)); }
 }

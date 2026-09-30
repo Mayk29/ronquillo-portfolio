@@ -35,7 +35,8 @@
 </div>
 
 <!-- MAIN HOME PAGE -->
-<div class="slider-page"
+<div class="slider-page" appSwipe (swipeLeft)="swipeCard(1)" (swipeRight)="swipeCard(-1)"
+     [attr.data-slide]="slideKey"
      [class.page-visible]="!isLoading"
      [class.home-slide]="activeIndex === 0"
      [style.backgroundImage]="activeIndex === 0 ? 'none' : 'url(' + cards[activeIndex].bg + ')'">

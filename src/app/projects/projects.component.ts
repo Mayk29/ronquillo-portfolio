@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SwipeDirective } from '../shared/swipe.directive';
 
 interface Project {
   title: string;
@@ -18,7 +19,7 @@ interface Project {
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SwipeDirective],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css',
 })

@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SwipeDirective } from '../shared/swipe.directive';
 
 interface Reference {
   name: string;
@@ -19,7 +20,7 @@ interface Reference {
 @Component({
   selector: 'app-references',
   standalone: true,
-  imports: [],
+  imports: [SwipeDirective],
   templateUrl: './references.component.html',
   styleUrl: './references.component.css'
 })

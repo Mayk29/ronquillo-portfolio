@@ -10,6 +10,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
   background: #0a0a0a;
 }
@@ -19,6 +20,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   min-height: 600px;
 }
 
@@ -371,4 +373,10 @@
   .cert-btn {
     align-self: center;
   }
+}
+
+/* ── Bottom clearance for phone/tablet browser bars ── */
+@media (max-width: 1024px) {
+  .cert-nav { bottom: calc(1.5rem + var(--bottom-clear)); }
+  .cert-content { padding-bottom: calc(6rem + var(--bottom-clear)); }
 }

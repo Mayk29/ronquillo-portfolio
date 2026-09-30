@@ -1,4 +1,4 @@
-<section class="proj-showcase">
+<section class="proj-showcase" appSwipe (swipeLeft)="next()" (swipeRight)="prev()">
   <div class="proj-hero-wrapper">
     @for (proj of projects; track proj.title; let i = $index) {
       <div

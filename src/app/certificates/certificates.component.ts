@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SwipeDirective } from '../shared/swipe.directive';
 
 declare const AOS: any;
 
@@ -17,7 +18,7 @@ interface Certificate {
 @Component({
   selector: 'app-certificates',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SwipeDirective],
   templateUrl: './certificates.component.html',
   styleUrl: './certificates.component.css',
 })

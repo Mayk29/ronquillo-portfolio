@@ -3,6 +3,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -12,10 +13,11 @@
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 640px) and (max-width: 1100px) {
   .slider-page {
     height: auto;
     min-height: 100vh;
+    min-height: 100dvh;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -346,7 +348,7 @@
   align-items: flex-end;
   justify-content: center;
   gap: 12px;
-  padding: 0 40px 30px;
+  padding: 0 40px calc(30px + var(--bottom-clear));
 }
 
 .nav-card {
@@ -467,7 +469,7 @@
   }
 
   .card-strip {
-    padding: 12px 0 20px;
+    padding: 12px 0 calc(20px + var(--bottom-clear));
     gap: 0;
     overflow: visible;
     justify-content: center;
@@ -768,4 +770,18 @@
 @media (max-width: 480px) {
   .boot-log { min-height: 100px; max-height: 130px; padding: 10px 12px; }
   .boot-logo { height: 52px; }
+}
+/* ── Swipe feedback: hero text slides in from the swipe direction ── */
+@keyframes swipeInFromRightA { from { opacity: 0; transform: translateX(48px); } to { opacity: 1; transform: none; } }
+@keyframes swipeInFromRightB { from { opacity: 0; transform: translateX(48px); } to { opacity: 1; transform: none; } }
+@keyframes swipeInFromLeftA  { from { opacity: 0; transform: translateX(-48px); } to { opacity: 1; transform: none; } }
+@keyframes swipeInFromLeftB  { from { opacity: 0; transform: translateX(-48px); } to { opacity: 1; transform: none; } }
+
+.slider-page[data-slide="next-a"] .hero-content { animation: swipeInFromRightA 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+.slider-page[data-slide="next-b"] .hero-content { animation: swipeInFromRightB 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+.slider-page[data-slide="prev-a"] .hero-content { animation: swipeInFromLeftA 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+.slider-page[data-slide="prev-b"] .hero-content { animation: swipeInFromLeftB 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .slider-page[data-slide] .hero-content { animation: none; }
 }
