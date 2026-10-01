@@ -279,6 +279,7 @@
 
 /* ---- SKILLS CHART ---- */
 .skills-chart-wrapper {
+  flex: 0 1 560px;
   min-width: 320px;
 }
 
@@ -306,20 +307,32 @@
   margin-bottom: 1.5rem;
 }
 
+.skills-chart-card {
+  /* lets the chart size itself from the card width (cqw units) */
+  container-type: inline-size;
+}
+
+/* All bars share the card width (no horizontal scrolling at any screen size); labels run
+   vertically under each bar so 13 of them fit even on narrow phones. */
 .skills-chart {
+  --label-font: clamp(0.58rem, 3cqw, 0.95rem);
+  --label-area: calc(var(--label-font) * 6.4);
   display: flex;
-  gap: 0.6rem;
+  gap: clamp(2px, 1.1cqw, 8px);
   align-items: flex-end;
-  height: 160px;
-  padding: 0 0.5rem;
+  height: calc(170px + var(--label-area));
+  padding: 0;
 }
 
 .bar-wrap {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
   height: 100%;
+  padding-bottom: calc(var(--label-area) + 0.4rem);
   justify-content: flex-end;
 }
 
@@ -337,16 +350,19 @@
 }
 
 .bar-label {
-  font-size: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: var(--label-area);
+  font-size: var(--label-font);
+  line-height: 1;
   font-weight: 600;
   color: rgb(255, 255, 255);
-  margin-top: 0.4rem;
-  text-align: center;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
   letter-spacing: 0.03em;
+  writing-mode: vertical-rl;
+  transform: translateX(-50%) rotate(180deg);
+  text-align: end; /* after the 180deg flip this anchors the text to the top, right under its bar */
 }
 
 .chart-footer {
@@ -700,24 +716,9 @@
 
   /* ── Skills chart ── */
   .skills-chart-wrapper {
+    flex: 0 0 auto;
     min-width: unset;
     width: 100%;
-  }
-
-  .skills-chart {
-    overflow-x: auto;
-    overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .bar-wrap {
-    flex: 0 0 auto;
-    min-width: 36px;
-    width: clamp(36px, 9vw, 56px);
-  }
-
-  .bar-label {
-    font-size: clamp(0.55rem, 2vw, 1rem);
   }
 
   /* ── Education ── */
