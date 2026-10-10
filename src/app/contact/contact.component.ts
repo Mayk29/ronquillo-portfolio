@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 declare const AOS: any;
 declare const emailjs: any;
+declare const gtag: ((...args: unknown[]) => void) | undefined;
 
 @Component({
   selector: 'app-contact',
@@ -62,6 +63,7 @@ export class ContactComponent implements OnInit {
 
     emailjs.send(this.SERVICE_ID, this.TEMPLATE_ID, templateParams, this.PUBLIC_KEY)
       .then(() => {
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', { method: 'contact_form' });
         this.isSending = false;
         this.successMessage = 'Your inquiry has been sent! I will get back to you soon.';
         this.form = { senderName: '', senderEmail: '', inquiryType: '', position: '', budget: '', message: '' };
