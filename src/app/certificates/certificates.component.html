@@ -1,4 +1,5 @@
 <section class="cert-showcase" appSwipe (swipeLeft)="next()" (swipeRight)="prev()">
+  <h1 class="sr-only">Certificates and Awards of Michael Ronquillo</h1>
   <div class="cert-hero-wrapper">
     @for (cert of certificates; track cert.title; let i = $index) {
       <div

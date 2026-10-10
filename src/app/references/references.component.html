@@ -1,4 +1,5 @@
 <section class="ref-showcase" appSwipe (swipeLeft)="next()" (swipeRight)="prev()">
+  <h1 class="sr-only">References for Michael Ronquillo, Web Developer</h1>
   <div class="ref-hero-wrapper">
     @for (ref of references; track ref.name; let i = $index) {
       <div
