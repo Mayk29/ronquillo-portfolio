@@ -14,9 +14,9 @@ export const routes: Routes = [
     path: '',
     component: HomeComponent,
     data: seo({
-      title: 'Michael Ronquillo | Frontend & Full Stack Developer',
+      title: 'Michael Ronquillo | Web Developer in Pampanga, Philippines',
       description:
-        'Michael Arnold Ronquillo is a Frontend, Full Stack, Web and SEO Developer in the Philippines building fast, accessible web apps with React, TypeScript, Angular, Node.js and WordPress.',
+        'Michael Ronquillo: Frontend, Full Stack, Web & SEO Developer in Pampanga, Philippines. Junior Frontend Developer at Cellwego PH, open to freelance and part-time work.',
       path: '/',
     }),
   },
@@ -24,9 +24,9 @@ export const routes: Routes = [
     path: 'contact',
     component: ContactComponent,
     data: seo({
-      title: 'Hire Michael Ronquillo | Contact',
+      title: 'Hire Michael Ronquillo | Freelance Web Developer, Philippines',
       description:
-        'Get in touch with Michael Ronquillo for full-time roles, freelance web development, WordPress and SEO projects. Send an inquiry or email directly.',
+        'Hire Michael Ronquillo, a web developer in Pampanga, Philippines, for part-time, freelance and full-time frontend, full-stack, WordPress and SEO work.',
       path: '/contact',
     }),
   },
@@ -44,7 +44,7 @@ export const routes: Routes = [
     path: 'references',
     component: ReferencesComponent,
     data: seo({
-      title: 'References | Michael Ronquillo, Web Developer',
+      title: 'References | Michael Ronquillo, Web Developer in Pampanga',
       description:
         'Professional and academic references for Michael Ronquillo from Holy Angel University, IT Squarehub and past clients.',
       path: '/references',
@@ -54,7 +54,7 @@ export const routes: Routes = [
     path: 'projects',
     component: ProjectsComponent,
     data: seo({
-      title: 'Projects | Michael Ronquillo, Web Developer',
+      title: 'Projects | Michael Ronquillo, Frontend & Full Stack Developer',
       description:
         "Projects by Michael Ronquillo: Velo by Velox, Velox, MedFind pharmacy system, IT Squarehub certificate generator, Bamacom's 100/100 SEO website redesign and more.",
       path: '/projects',
@@ -64,9 +64,9 @@ export const routes: Routes = [
     path: 'about',
     component: AboutComponent,
     data: seo({
-      title: 'About Michael Ronquillo | Web & SEO Developer',
+      title: 'About Michael Ronquillo | Frontend & Full Stack Developer, Pampanga',
       description:
-        'Junior Frontend Developer at Cellwego PH with freelance full-stack, WordPress and SEO experience. Skills in React, TypeScript, Angular, Node.js, MySQL, Figma and AI-assisted coding.',
+        'Michael Ronquillo is a Junior Frontend Developer at Cellwego PH (Velo by Velox) from Porac, Pampanga, with full-stack, WordPress and SEO skills: React, TypeScript, Angular, Node.js, MySQL.',
       path: '/about',
     }),
   },
