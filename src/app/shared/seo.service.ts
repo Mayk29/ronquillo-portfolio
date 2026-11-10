@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
 
-export const SITE_URL = 'https://ronquillo-michael-personal.vercel.app';
+export const SITE_URL = 'https://devmayk.com';
 
 export interface PageSeo {
   title: string;

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ronquillo-michael-personal.vercel.app/sitemap.xml
+Sitemap: https://devmayk.com/sitemap.xml

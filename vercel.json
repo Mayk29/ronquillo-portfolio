@@ -1,4 +1,18 @@
 {
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "ronquillo-michael-personal.vercel.app" }],
+      "destination": "https://devmayk.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.devmayk.com" }],
+      "destination": "https://devmayk.com/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
