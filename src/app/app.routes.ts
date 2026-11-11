@@ -56,7 +56,7 @@ export const routes: Routes = [
     data: seo({
       title: 'Projects | Michael Ronquillo, Frontend & Full Stack Developer',
       description:
-        "Projects by Michael Ronquillo: Velo by Velox, Velox, MedFind pharmacy system, IT Squarehub certificate generator, Bamacom's 100/100 SEO website redesign and more.",
+        "Projects by Michael Ronquillo: Velo by Velox, Velox, Maroev Cyber Systems website redesign, MedFind pharmacy system, Bamacom's 100/100 SEO redesign and more.",
       path: '/projects',
     }),
   },

@@ -59,7 +59,7 @@ export class ProjectsComponent implements OnInit, OnDestroy, AfterViewInit {
       title: 'Maroev Cyber Systems',
       category: 'Client Website Redesign · Team Lead',
       description:
-        "A four-month redesign of the company website for Maroev Cyber Systems, a Philippine cybersecurity and ICT solutions company, built through constant revisions and direct communication with the client. We were a team of 2 developers and I served as the lead developer. I set up and configured the plugins, implemented SEO on every page, applied dark and light mode across the site, and migrated the content from the previous website to the redesigned one. I also designed some of the pages, put security measures in place, and fixed layout bugs. Built on WordPress and hosted on Hostinger.",
+        "A four-month redesign of the company website for Maroev Cyber Systems, a Philippine cybersecurity and ICT solutions company, built through constant revisions and direct communication with the client. We were a team of 2 developers and I served as the lead developer. I set up and configured the plugins, implemented SEO on every page, applied dark and light mode across the site, and migrated the content from the previous website to the redesigned one. I also designed some of the pages, put security measures in place, and fixed layout bugs. Built on WordPress with Gutenberg and hosted on Hostinger.",
       videoType: 'local',
       videoFile: 'maroev-showcase.mp4',
       websiteUrl: 'https://maroev.com/',

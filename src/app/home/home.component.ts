@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     { pct: 12, text: 'LOADING ASSETS...',               line: '[ OK ] Asset manifests loaded' },
     { pct: 22, text: 'DECRYPTING DATA...',              line: '[ OK ] Encryption keys verified' },
     { pct: 33, text: 'AUTHENTICATING USER...',          line: '[ OK ] Identity confirmed: M.RONQUILLO' },
-    { pct: 44, text: 'COMPILING PORTFOLIO...',          line: '[ OK ] Projects indexed — 6 entries found' },
+    { pct: 44, text: 'COMPILING PORTFOLIO...',          line: '[ OK ] Projects indexed — 10 entries found' },
     { pct: 55, text: 'ESTABLISHING CONNECTION...',      line: '[ OK ] Secure channel established' },
     { pct: 66, text: 'LOADING CERTIFICATES...',         line: '[ OK ] Credentials validated' },
     { pct: 75, text: 'CALIBRATING INTERFACE...',        line: '[ OK ] UI components registered' },
