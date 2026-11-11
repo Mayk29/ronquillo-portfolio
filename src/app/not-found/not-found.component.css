@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.nf-code {
+  font-size: clamp(6rem, 18vw, 11rem);
+  line-height: 1;
+  margin-bottom: 0;
+  color: #ffbf00;
+  text-shadow: 0 0 24px rgba(255, 191, 0, 0.55);
+}
+
+.nf-links {
+  margin-top: 1.5rem;
+  color: #aaa;
+}

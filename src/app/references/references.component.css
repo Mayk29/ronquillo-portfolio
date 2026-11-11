@@ -41,7 +41,7 @@
 
   background-image:
     radial-gradient(ellipse 70% 60% at 50% 40%, color-mix(in srgb, var(--accent, #b8ff57) 38%, transparent) 0%, transparent 70%),
-    url('../../../public/bg.PNG');
+    url('../../../public/bg.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

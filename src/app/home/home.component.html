@@ -131,11 +131,11 @@
              (click)="setActive(i)"></div>
       </div>
       <div class="carousel-arrows">
-        <button class="carousel-arrow" (click)="carouselPrev()">
-          <i class="fa-solid fa-chevron-left"></i>
+        <button class="carousel-arrow" type="button" aria-label="Previous page" (click)="carouselPrev()">
+          <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
         </button>
-        <button class="carousel-arrow" (click)="carouselNext()">
-          <i class="fa-solid fa-chevron-right"></i>
+        <button class="carousel-arrow" type="button" aria-label="Next page" (click)="carouselNext()">
+          <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
         </button>
       </div>
     </ng-container>

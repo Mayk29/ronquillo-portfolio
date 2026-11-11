@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       label: 'Home',
       icon: 'fa-solid fa-house',
-      bg: 'bg.PNG',
+      bg: 'bg.webp',
       title: 'Michael Ronquillo',
       desc: 'A flexible developer working as a Frontend Developer, Full Stack Developer, Web Developer, or SEO Developer depending on the project. Currently a Junior Frontend Developer at Cellwego PH, with freelance experience for direct clients.',
       link: null,
@@ -76,7 +76,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       label: 'About',
       icon: 'fa-solid fa-user',
-      bg: 'about-card.png',
+      bg: 'about-card.webp',
       title: 'About Me',
       desc: 'I am a passionate, flexible developer — Frontend, Full Stack, Web Development, or SEO — who loves building aesthetic and functional web experiences. I am always eager to learn new technologies and grow as a developer.',
       link: 'about',
@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       label: 'Projects',
       icon: 'fa-solid fa-folder-open',
-      bg: 'projects.png',
+      bg: 'projects.webp',
       title: 'My Projects',
       desc: 'Explore my best works from responsive websites to interactive web apps built through my experiences as a student, OJT intern and real-world project with clients.',
       link: '/projects',
@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       label: 'References',
       icon: 'fa-solid fa-users',
-      bg: 'references.png',
+      bg: 'references.webp',
       title: 'References',
       desc: 'Testimonials and references from professors, mentors, and clients who have worked with me.',
       link: '/references',
@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       label: 'Certificates',
       icon: 'fa-solid fa-certificate',
-      bg: 'certs.png',
+      bg: 'certs.webp',
       title: 'My Certificates',
       desc: 'Verified credentials and certifications I have earned, including CompTia ITF+, Google Analytics, FreeCodeCamp Responsive Web Design, and JavaScript Algorithms.',
       link: '/certificates',
@@ -112,7 +112,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       label: 'Contact',
       icon: 'fa-solid fa-envelope',
-      bg: 'contact.png',
+      bg: 'contact.webp',
       title: "Let's Connect",
       desc: 'Have a project in mind or want to hire me? Reach out and I will get back to you as soon as possible.',
       link: '/contact',

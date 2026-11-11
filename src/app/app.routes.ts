@@ -1,14 +1,11 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ContactComponent } from './contact/contact.component';
-import { CertificatesComponent } from './certificates/certificates.component';
-import { ReferencesComponent } from './references/references.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { AboutComponent } from './about/about.component';
 import { PageSeo } from './shared/seo.service';
 
 const seo = (s: PageSeo) => ({ seo: s });
 
+// Home is eager (it is the landing page); every other page is split into its own chunk so the
+// first load only downloads what the home page needs.
 export const routes: Routes = [
   {
     path: '',
@@ -22,7 +19,7 @@ export const routes: Routes = [
   },
   {
     path: 'contact',
-    component: ContactComponent,
+    loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent),
     data: seo({
       title: 'Hire Michael Ronquillo | Freelance Web Developer, Philippines',
       description:
@@ -32,7 +29,7 @@ export const routes: Routes = [
   },
   {
     path: 'certificates',
-    component: CertificatesComponent,
+    loadComponent: () => import('./certificates/certificates.component').then(m => m.CertificatesComponent),
     data: seo({
       title: 'Certificates & Awards | Michael Ronquillo',
       description:
@@ -42,7 +39,7 @@ export const routes: Routes = [
   },
   {
     path: 'references',
-    component: ReferencesComponent,
+    loadComponent: () => import('./references/references.component').then(m => m.ReferencesComponent),
     data: seo({
       title: 'References | Michael Ronquillo, Web Developer in Pampanga',
       description:
@@ -52,7 +49,7 @@ export const routes: Routes = [
   },
   {
     path: 'projects',
-    component: ProjectsComponent,
+    loadComponent: () => import('./projects/projects.component').then(m => m.ProjectsComponent),
     data: seo({
       title: 'Projects | Michael Ronquillo, Frontend & Full Stack Developer',
       description:
@@ -62,7 +59,7 @@ export const routes: Routes = [
   },
   {
     path: 'about',
-    component: AboutComponent,
+    loadComponent: () => import('./about/about.component').then(m => m.AboutComponent),
     data: seo({
       title: 'About Michael Ronquillo | Frontend & Full Stack Developer, Pampanga',
       description:
@@ -70,5 +67,15 @@ export const routes: Routes = [
       path: '/about',
     }),
   },
-  { path: '**', redirectTo: '' },
+  // Unknown URLs get an on-brand "not found" page (inside the normal layout) that search engines are told not to index
+  {
+    path: '**',
+    loadComponent: () => import('./not-found/not-found.component').then(m => m.NotFoundComponent),
+    data: seo({
+      title: 'Page not found | Michael Ronquillo',
+      description: 'This page does not exist. Head back to the portfolio of Michael Ronquillo.',
+      path: '/',
+      noindex: true,
+    }),
+  },
 ];
