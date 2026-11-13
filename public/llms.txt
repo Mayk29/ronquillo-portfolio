@@ -1,0 +1,16 @@
+# Michael Ronquillo
+
+> Portfolio of Michael Ronquillo: Frontend, Full Stack, Web and SEO Developer in Pampanga, Philippines. Junior Frontend Developer at Cellwego PH, open to freelance and part-time work.
+
+## Pages
+
+- [Home](https://devmayk.com/): Introduction and overview
+- [About](https://devmayk.com/about): Background, skills and experience
+- [Projects](https://devmayk.com/projects): Selected work and case studies
+- [Certificates](https://devmayk.com/certificates): Courses and certifications
+- [References](https://devmayk.com/references): Professional references
+- [Contact](https://devmayk.com/contact): Get in touch
+
+## Optional
+
+- [Resume (PDF)](https://devmayk.com/Michael-Ronquillo-Resume.pdf)

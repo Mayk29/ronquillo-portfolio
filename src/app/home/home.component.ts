@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private bgmSource: AudioBufferSourceNode | null = null;
   private bgmGainNode: GainNode | null = null;
   private bgmIsPlaying = false;
-  private bgmFallback = new Audio('game-loading.mp3');
+  private bgmFallback = new Audio();
   private usingFallback = false;
 
   private loadingTimer: any;
@@ -145,6 +145,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Audio init 
   private initAudio() {
+    this.bgmFallback.src = 'game-loading.mp3';
+    this.bgmFallback.preload = 'none';
     this.bgmFallback.loop = true;
     this.bgmFallback.volume = 0.2;
     this.preloadBgmBuffer();
