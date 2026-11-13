@@ -1,0 +1,10 @@
+{
+  "entries": [
+    {
+      "identifier": "urn:air:devmayk:site:llms-txt",
+      "displayName": "Michael Ronquillo portfolio: site overview for LLMs",
+      "type": "text/markdown",
+      "url": "https://devmayk.com/llms.txt"
+    }
+  ]
+}
